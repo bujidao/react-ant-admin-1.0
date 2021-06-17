@@ -1,0 +1,43 @@
+.header {
+  background: rgba(255, 255, 255, 0.8);
+  height: 44px;
+  line-height: 44px;
+  width: 1200px;
+  margin: 0 auto;
+  .logo {
+    float: left;
+    cursor: pointer;
+    font-size: 32px;
+    color: @text-color;
+    &:hover {
+      color: @text-link-color;
+    }
+  }
+  .menu {
+    float: left;
+    &-item {
+      float: left;
+      padding: 0 10px;
+      margin: 0 10px;
+      cursor: pointer;
+      color: @text-color;
+      &:hover {
+        color: @text-link-color;
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.mylogo {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
