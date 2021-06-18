@@ -11,6 +11,7 @@ const routes = [
         meta: {
           title: '首页',
           isMenu: true,
+          icon: '',
         },
       },
       {
@@ -20,6 +21,24 @@ const routes = [
           title: '用户中心',
           isMenu: true,
         },
+        routes: [
+          {
+            path: '/user/list',
+            component: '@/pages/user/list',
+            meta: {
+              title: '用户列表',
+              isMenu: true,
+            },
+          },
+          {
+            path: '/user/manage',
+            component: '@/pages/user/manage',
+            meta: {
+              title: '用户管理',
+              isMenu: true,
+            },
+          },
+        ],
       },
       {
         path: '/about',
@@ -38,6 +57,7 @@ const routes = [
         },
       },
       {
+        path: '/404',
         component: './404',
         meta: {
           title: '404',
