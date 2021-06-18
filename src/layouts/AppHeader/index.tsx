@@ -1,8 +1,28 @@
 import React from 'react';
 
-class AppHeader extends React.Component {
+import TiggerSide from './components/TiggerSide/index';
+import BreadCrumb from './components/BreadCrumb/index';
+
+type AppHeaderType = {
+  collapsed: boolean;
+  onTiggerSideClick: Function;
+};
+
+class AppHeader extends React.Component<AppHeaderType> {
+  handleTiggerSideClick() {
+    const { onTiggerSideClick } = this.props;
+    onTiggerSideClick && onTiggerSideClick();
+  }
   render() {
-    return <div>header</div>;
+    return (
+      <>
+        <TiggerSide
+          collapsed={this.props.collapsed}
+          onClick={this.handleTiggerSideClick.bind(this)}
+        />
+        {/* <BreadCrumb /> */}
+      </>
+    );
   }
 }
 

@@ -1,14 +1,5 @@
-import { Layout, Menu } from 'antd';
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-} from '@ant-design/icons';
-
 import React from 'react';
-
+import { Layout } from 'antd';
 import styles from './index.less';
 
 const { Header, Sider, Content } = Layout;
@@ -32,6 +23,7 @@ class App extends React.Component {
   render() {
     return (
       <Layout className={styles['app-container']}>
+        {/* side menu */}
         <Sider
           className={styles['app-side']}
           trigger={null}
@@ -42,22 +34,22 @@ class App extends React.Component {
           <Logo collapsed={this.state.collapsed} />
           <SideMenu />
         </Sider>
+        {/* side menu end */}
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }}>
-            {React.createElement(
-              this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-              {
-                className: 'trigger',
-                onClick: this.toggle,
-              },
-            )}
+          {/* header navigation */}
+          <Header className={styles['app-header']} style={{ padding: 0 }}>
+            <AppHeader
+              collapsed={this.state.collapsed}
+              onTiggerSideClick={this.toggle}
+            />
           </Header>
-          {/* <Header>
-            <AppHeader />
-          </Header> */}
+          {/* header navigation end */}
+
+          {/* main body */}
           <Content>
             <AppMain children={this.props.children} />
           </Content>
+          {/* main body end */}
         </Layout>
       </Layout>
     );

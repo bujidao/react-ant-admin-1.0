@@ -2,7 +2,6 @@ const Layout = '@/layouts/index';
 
 const routes = [
   {
-    path: '/',
     component: Layout,
     routes: [
       {
@@ -16,7 +15,6 @@ const routes = [
       },
       {
         path: '/user',
-        component: '@/pages/user',
         meta: {
           title: '用户中心',
           isMenu: true,
@@ -39,6 +37,14 @@ const routes = [
             },
           },
         ],
+      },
+      {
+        path: '/table',
+        component: '@/pages/table',
+        meta: {
+          title: '表格',
+          isMenu: true,
+        },
       },
       {
         path: '/about',

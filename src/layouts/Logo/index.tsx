@@ -15,17 +15,20 @@ class Logo extends React.Component<LogoParams> {
     } else {
       logo = logoImg;
     }
-    return (
-      <div className={styles.logo}>
-        <img
-          src={logo}
-          alt=""
-          style={{
-            marginRight: !this.props.collapsed ? '10px' : '0px',
-          }}
-        />
-        {!this.props.collapsed && <span>{settings.title}</span>}
-      </div>
+    return React.createElement(
+      'div',
+      {
+        className: styles.logo,
+      },
+      React.createElement('img', {
+        src: logo,
+        className: styles.img,
+        style: {
+          marginRight: !this.props.collapsed ? '10px' : '0px',
+        },
+      }),
+      !this.props.collapsed &&
+        React.createElement('span', null, settings.title),
     );
   }
 }

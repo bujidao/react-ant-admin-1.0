@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './index.less';
 
 class AppMain extends React.Component {
   render() {
-    return <div>{this.props.children}</div>;
+    return <div className={styles['app-main']}>{this.props.children}</div>;
   }
 }
 
