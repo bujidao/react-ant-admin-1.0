@@ -17,13 +17,23 @@ class TheTable extends React.Component<TheTableType, TheTableType> {
     },
     {
       title: 'Title',
-      dateIndex: 'title',
+      dataIndex: 'title',
       key: 'title',
+      render: (text: any) => (
+        <>
+          <a>{text}</a>
+        </>
+      ),
     },
     {
       title: 'Author',
-      dateIndex: 'author',
+      dataIndex: 'author',
       key: 'author',
+    },
+    {
+      title: 'city',
+      dataIndex: 'city',
+      key: 'city',
     },
   ];
 
@@ -51,6 +61,7 @@ class TheTable extends React.Component<TheTableType, TheTableType> {
         dataSource: this.state.dataList,
         columns: this.columns,
         bordered: true,
+        rowKey: 'id',
       },
       null,
     );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Menu } from 'antd';
 import { history } from 'umi';
+import path from 'path';
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -13,9 +14,17 @@ import styles from './index.less';
 
 import routes from '@/routes/index';
 
-class SideMenu extends React.Component {
+type SideMenuType = {
+  displayRoutes: Array<any>;
+};
+
+class SideMenu extends React.Component<SideMenuType, SideMenuType> {
   constructor(props: any) {
     super(props);
+    this.generateRoutes = this.generateRoutes.bind(this);
+    this.state = {
+      displayRoutes: this.generateRoutes(routes[0].routes),
+    };
   }
 
   getMenus(routes: any) {
@@ -43,11 +52,7 @@ class SideMenu extends React.Component {
             </Menu.SubMenu>,
           );
         }
-      } else if (
-        route.hasOwnProperty('meta') &&
-        route.meta.hasOwnProperty('isMenu') &&
-        route.meta.isMenu
-      ) {
+      } else if (!route.hasOwnProperty('hidden') && !route.hidden) {
         menuList.push(
           <Menu.Item
             key={'menu-item-' + route.path}
@@ -62,6 +67,30 @@ class SideMenu extends React.Component {
     return menuList;
   }
 
+  // Filter out the routes that can be displayed in the sidebar
+  // And generate the internationalized title
+  generateRoutes(routes: any) {
+    let res: any = [];
+    for (let route of routes) {
+      if (route.hidden) {
+        continue;
+      }
+
+      if (route.routes) {
+        const tempRoutes = this.generateRoutes(route.routes);
+        if (tempRoutes.length >= 1) {
+          res.push({
+            ...route,
+            routes: tempRoutes,
+          });
+        }
+      } else {
+        res.push(route);
+      }
+    }
+    return res;
+  }
+
   render() {
     return (
       <Menu
@@ -70,7 +99,7 @@ class SideMenu extends React.Component {
         defaultSelectedKeys={['/']}
         className={styles.menu}
       >
-        {this.getMenus(routes[0].routes)}
+        {this.getMenus(this.state.displayRoutes)}
       </Menu>
     );
   }

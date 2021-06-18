@@ -19,7 +19,7 @@ export default {
           id: '@id',
           date: '@date("yyyy-MM-dd")',
           'star|1-5': '★',
-          title: '@ctitle(15)',
+          title: '@ctitle(10, 20)',
           content: '@cparagraph()',
           state: '@boolean',
           readCount: '@integer(800, 3000)',

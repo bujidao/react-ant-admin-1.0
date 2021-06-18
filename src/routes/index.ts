@@ -1,5 +1,17 @@
 const Layout = '@/layouts/index';
 
+/**
+ *
+ * Note: sub-menu will appear when route children.length >= 1
+ *
+ * hidden: true               if set true, item will not show in the sidebar(default: false)
+ *
+ * meta: {
+    title: 'title'            the name show in sidebar、page title and breadcrumb (recommend set)
+  }
+ *
+ */
+
 const routes = [
   {
     component: Layout,
@@ -9,7 +21,6 @@ const routes = [
         component: '@/pages/home',
         meta: {
           title: '首页',
-          isMenu: true,
           icon: '',
         },
       },
@@ -17,7 +28,6 @@ const routes = [
         path: '/user',
         meta: {
           title: '用户中心',
-          isMenu: true,
         },
         routes: [
           {
@@ -25,7 +35,6 @@ const routes = [
             component: '@/pages/user/list',
             meta: {
               title: '用户列表',
-              isMenu: true,
             },
           },
           {
@@ -33,7 +42,6 @@ const routes = [
             component: '@/pages/user/manage',
             meta: {
               title: '用户管理',
-              isMenu: true,
             },
           },
         ],
@@ -43,7 +51,6 @@ const routes = [
         component: '@/pages/table',
         meta: {
           title: '表格',
-          isMenu: true,
         },
       },
       {
@@ -51,7 +58,6 @@ const routes = [
         component: '@/pages/about',
         meta: {
           title: '关于我们',
-          isMenu: true,
         },
       },
       {
@@ -59,15 +65,14 @@ const routes = [
         component: '@/pages/list',
         meta: {
           title: '列表测试',
-          isMenu: true,
         },
       },
       {
         path: '/404',
         component: './404',
+        hidden: true,
         meta: {
           title: '404',
-          isMenu: true,
         },
       },
     ],
