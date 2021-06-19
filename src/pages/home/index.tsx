@@ -2,6 +2,9 @@ import React from 'react';
 import styles from './index.less';
 
 class App extends React.Component {
+  constructor(props: any) {
+    super(props);
+  }
   render() {
     return (
       <div>
@@ -9,7 +12,7 @@ class App extends React.Component {
         <ul>
           <li>adf</li>
           <li>af</li>
-          <li>asdf</li>
+          <li>111</li>
         </ul>
         <input
           type="text"

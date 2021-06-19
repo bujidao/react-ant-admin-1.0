@@ -4,6 +4,8 @@ import getPageTitle from '@/utils/get-page-title';
 
 import './styles/index.less';
 
+// import './store/index'
+
 /**
  * render
  */
@@ -12,7 +14,7 @@ export function render(oldRender: Function) {
     if (auth.isLogin) {
       oldRender();
     } else {
-      history.push('/');
+      history.push('/store');
       oldRender();
     }
   });

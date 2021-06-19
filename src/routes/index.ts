@@ -68,11 +68,25 @@ const routes = [
         },
       },
       {
+        path: '/i18n',
+        component: '@/pages/i18n',
+        meta: {
+          title: '国际化',
+        },
+      },
+      {
         path: '/404',
         component: './404',
         hidden: true,
         meta: {
           title: '404',
+        },
+      },
+      {
+        path: '/store',
+        component: '@/pages/store',
+        meta: {
+          title: 'store',
         },
       },
     ],
