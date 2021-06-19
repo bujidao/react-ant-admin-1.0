@@ -9,6 +9,15 @@ declare module '*.svg' {
   export default url;
 }
 
+// redux
+// detail: https://github.com/redux-utilities/flux-standard-action
+type ReduxActionType = {
+  type: string;
+  payload?: any;
+  error?: boolean;
+  meta?: any;
+};
+
 // axios
 
 // import { AxiosRequestConfig } from 'axios'

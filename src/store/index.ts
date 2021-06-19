@@ -1,33 +1,13 @@
 import { createStore, combineReducers } from 'redux';
 
-type languageStateType = {
-  language: string;
-};
-
-const initLanguageState = {
-  language: 'zh-aa',
-};
-
-const languageReducer = (
-  state: languageStateType = initLanguageState,
-  action: any,
-) => {
-  switch (action.type) {
-    case 'change_language':
-      return Object.assign({}, state, action);
-    default:
-      return state;
-  }
-};
+import app from './app/index';
 
 const allReducer = {
-  languageReducer,
+  ...app,
 };
 
 const rootReducer = combineReducers(allReducer);
 
 let store = createStore(rootReducer);
-
-// console.log(store.getState() )
 
 export default store;

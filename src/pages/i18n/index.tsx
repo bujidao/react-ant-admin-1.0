@@ -3,6 +3,7 @@ import styles from './index.less';
 import { Card, Radio, Row, Col, Button } from 'antd';
 import { ReactComponent as Earth } from '../../icons/svg/earth.svg';
 import store from '../../store/index';
+import { toggleLanguage } from '../../store/app/language';
 
 class CardTitle extends React.Component {
   constructor(props: any) {
@@ -51,18 +52,13 @@ class I18n extends React.Component<I18nType, I18nType> {
   }
 
   handleLanguageChange(e: any) {
-    store.dispatch({
-      type: 'change_language',
-      language: e.target.value,
-    });
+    store.dispatch(toggleLanguage(e.target.value));
   }
 
   handleLanguageSubscribe = () => {
     store.subscribe(() => {
-      const language = store.getState().languageReducer.language;
-      this.setState({
-        language: language,
-      });
+      console.log(store.getState());
+      this.setState({});
     });
   };
 
@@ -81,7 +77,9 @@ class I18n extends React.Component<I18nType, I18nType> {
             >
               <Radio.Button value="zh-CN">中文</Radio.Button>
               <Radio.Button value="en-EU">English</Radio.Button>
-              <Radio.Button value="en-EU2">{this.state.language}</Radio.Button>
+              <Radio.Button value="en-EU2">
+                {store.getState().language.language}
+              </Radio.Button>
             </Radio.Group>
           </Card>
         </div>

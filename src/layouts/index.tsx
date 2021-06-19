@@ -8,16 +8,26 @@ import SideMenu from './SideMenu/index';
 import Logo from './Logo/index';
 import AppHeader from './AppHeader/index';
 import AppMain from './AppMain/index';
+import store from '../store/index';
+import { toggleSideMenu } from '../store/app/side-menu';
 
 class App extends React.Component {
   state = {
     collapsed: false,
   };
 
+  componentDidMount() {
+    console.log(store.getState().sideMenu.isOpen);
+    this.setState({
+      collapsed: store.getState().sideMenu.isOpen,
+    });
+  }
+
   toggle = () => {
     this.setState({
       collapsed: !this.state.collapsed,
     });
+    store.dispatch(toggleSideMenu(this.state.collapsed));
   };
 
   render() {
