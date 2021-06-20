@@ -26,6 +26,7 @@
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
+    "react-markdown": "^6.0.2",
     "redux": "^4.1.0",
     "umi": "^3.4.23"
   },

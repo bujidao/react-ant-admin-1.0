@@ -3,7 +3,7 @@ import { createStore, combineReducers } from 'redux';
 import app from './app/index';
 
 const allReducer = {
-  ...app,
+  app,
 };
 
 const rootReducer = combineReducers(allReducer);

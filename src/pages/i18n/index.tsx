@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './index.less';
 import { Card, Radio, Row, Col, Button } from 'antd';
 import { ReactComponent as Earth } from '../../icons/svg/earth.svg';
 import store from '../../store/index';
-import { toggleLanguage } from '../../store/app/language';
+import { toggleLanguage } from '@/store/app/index';
 
 class CardTitle extends React.Component {
   constructor(props: any) {
@@ -41,6 +41,8 @@ type I18nType = {
 };
 
 class I18n extends React.Component<I18nType, I18nType> {
+  subscribe?: any;
+
   constructor(props: any) {
     super(props);
     this.state = {
@@ -56,11 +58,14 @@ class I18n extends React.Component<I18nType, I18nType> {
   }
 
   handleLanguageSubscribe = () => {
-    store.subscribe(() => {
-      console.log(store.getState());
+    this.subscribe = store.subscribe(() => {
       this.setState({});
     });
   };
+
+  componentWillUnmount() {
+    // this.subscribe()
+  }
 
   render() {
     return (
@@ -78,7 +83,7 @@ class I18n extends React.Component<I18nType, I18nType> {
               <Radio.Button value="zh-CN">中文</Radio.Button>
               <Radio.Button value="en-EU">English</Radio.Button>
               <Radio.Button value="en-EU2">
-                {store.getState().language.language}
+                {/* {store.getState()} */}
               </Radio.Button>
             </Radio.Group>
           </Card>

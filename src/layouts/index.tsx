@@ -9,7 +9,7 @@ import Logo from './Logo/index';
 import AppHeader from './AppHeader/index';
 import AppMain from './AppMain/index';
 import store from '../store/index';
-import { toggleSideMenu } from '../store/app/side-menu';
+import { toggleSideMenu } from '../store/app/index';
 
 class App extends React.Component {
   state = {
@@ -17,9 +17,8 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    console.log(store.getState().sideMenu.isOpen);
     this.setState({
-      collapsed: store.getState().sideMenu.isOpen,
+      collapsed: !store.getState().app.sideMenu,
     });
   }
 
