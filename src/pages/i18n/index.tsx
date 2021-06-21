@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './index.less';
 import { Card, Radio, Row, Col, Button } from 'antd';
 import { ReactComponent as Earth } from '../../icons/svg/earth.svg';
 import store from '../../store/index';
 import { toggleLanguage } from '@/store/app/index';
-// import { useIntl } from 'umi';
-import { useIntl } from 'react-intl';
+import { injectIntl } from 'umi';
 
-class CardTitle extends React.Component {
+type CardTitleType = {
+  intl: any;
+};
+
+class CardTitle extends React.Component<CardTitleType> {
   constructor(props: any) {
     super(props);
-
-    // intl = useIntl()
   }
 
   render() {
@@ -35,16 +36,23 @@ class CardTitle extends React.Component {
         },
         null,
       ),
-      React.createElement('span', null, '切换语言'),
+      React.createElement(
+        'span',
+        null,
+        this.props.intl.formatMessage({
+          id: 'app.switchLanguage',
+        }),
+      ),
     );
   }
 }
 
 type I18nType = {
   language: string;
+  intl: any;
 };
 
-class I18n extends React.Component<I18nType, I18nType> {
+class I18n extends React.Component<I18nType> {
   unsubscribeId: any;
 
   constructor(props: any) {
@@ -71,29 +79,46 @@ class I18n extends React.Component<I18nType, I18nType> {
   }
 
   render() {
+    const Title = injectIntl(CardTitle);
     return (
       <div className={styles['i18n-container']}>
         <div style={{ textAlign: 'center' }}>
           <Card
-            title={<CardTitle />}
+            title={<Title />}
             style={{ width: '50%', display: 'inline-block' }}
           >
             <Radio.Group
-              defaultValue={this.state.language}
+              defaultValue={this.props.language}
               onChange={this.handleLanguageChange}
             >
               <Radio.Button value="zh-CN">中文</Radio.Button>
-              <Radio.Button value="en-EU">English</Radio.Button>
+              <Radio.Button value="en-US">English</Radio.Button>
             </Radio.Group>
           </Card>
         </div>
         <div style={{ marginTop: '20px' }}>
           <Row>
             <Col span={12}>
-              <Button type="default">默认按钮</Button>
-              <Button type="dashed">虚线按钮</Button>
-              <Button type="primary">主要按钮</Button>
-              <Button danger>危险按钮</Button>
+              <Button type="default">
+                {this.props.intl.formatMessage({
+                  id: 'button.default',
+                })}
+              </Button>
+              <Button type="dashed">
+                {this.props.intl.formatMessage({
+                  id: 'button.dashed',
+                })}
+              </Button>
+              <Button type="primary">
+                {this.props.intl.formatMessage({
+                  id: 'button.primary',
+                })}
+              </Button>
+              <Button danger>
+                {this.props.intl.formatMessage({
+                  id: 'button.danger',
+                })}
+              </Button>
             </Col>
             <Col span={12}></Col>
           </Row>
@@ -103,4 +128,4 @@ class I18n extends React.Component<I18nType, I18nType> {
   }
 }
 
-export default I18n;
+export default injectIntl(I18n);

@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import { getLanguage } from '../../locales/index';
+import { setLocale } from 'umi';
 
 /**
  * open 打开
@@ -19,10 +20,12 @@ const initAppState: initAppStateType = {
 const appReducer = (state = initAppState, action: ReduxActionType) => {
   switch (action.type) {
     case 'TOGGLE_LANGUAGE':
-      Cookies.set('language', action.payload);
+      const newLanguage = action.payload;
+      Cookies.set('language', newLanguage);
+      setLocale(newLanguage, false);
       return {
         ...state,
-        language: action.payload,
+        language: newLanguage,
       };
     case 'TOGGLE_SIDE_MENU':
       Cookies.set('side-menu', action.payload);

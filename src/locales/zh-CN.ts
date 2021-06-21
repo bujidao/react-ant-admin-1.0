@@ -1,7 +1,17 @@
-export default {
-  welcome: '欢迎',
-  name: '你好, {name}',
-  menu: {
-    dashboard: '首页',
+import defaultSettings from '../../config/defaultSettings';
+import { formatLocales } from './index';
+
+const locale = {
+  app: {
+    welcome: `欢迎使用 ${defaultSettings.title}`,
+    switchLanguage: '切换语言',
+  },
+  button: {
+    default: '默认按钮',
+    danger: '危险按钮',
+    primary: '主要按钮',
+    dashed: '虚线按钮',
   },
 };
+
+export default formatLocales(locale);
