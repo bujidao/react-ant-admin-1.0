@@ -4,10 +4,14 @@ import { Card, Radio, Row, Col, Button } from 'antd';
 import { ReactComponent as Earth } from '../../icons/svg/earth.svg';
 import store from '../../store/index';
 import { toggleLanguage } from '@/store/app/index';
+// import { useIntl } from 'umi';
+import { useIntl } from 'react-intl';
 
 class CardTitle extends React.Component {
   constructor(props: any) {
     super(props);
+
+    // intl = useIntl()
   }
 
   render() {
@@ -38,7 +42,6 @@ class CardTitle extends React.Component {
 
 type I18nType = {
   language: string;
-  sideMenu: boolean;
 };
 
 class I18n extends React.Component<I18nType, I18nType> {
@@ -48,7 +51,6 @@ class I18n extends React.Component<I18nType, I18nType> {
     super(props);
     this.state = {
       language: store.getState().app.language,
-      sideMenu: store.getState().app.sideMenu,
     };
   }
 
@@ -56,7 +58,6 @@ class I18n extends React.Component<I18nType, I18nType> {
     this.unsubscribeId = store.subscribe(() => {
       this.setState({
         language: store.getState().app.language,
-        sideMenu: store.getState().app.sideMenu,
       });
     });
   }
@@ -83,10 +84,6 @@ class I18n extends React.Component<I18nType, I18nType> {
             >
               <Radio.Button value="zh-CN">中文</Radio.Button>
               <Radio.Button value="en-EU">English</Radio.Button>
-              <Radio.Button value="current-language">
-                {this.state.language}
-                {this.state.sideMenu}
-              </Radio.Button>
             </Radio.Group>
           </Card>
         </div>
