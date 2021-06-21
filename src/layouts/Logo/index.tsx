@@ -24,7 +24,7 @@ class Logo extends React.Component<LogoParams> {
         src: logo,
         className: styles.img,
         style: {
-          marginRight: !this.props.collapsed ? '10px' : '0px',
+          marginRight: this.props.collapsed ? '0px' : '10px',
         },
       }),
       !this.props.collapsed &&

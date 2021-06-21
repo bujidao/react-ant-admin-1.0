@@ -1,14 +1,7 @@
 import React from 'react';
 import { Menu } from 'antd';
 import { history } from 'umi';
-import path from 'path';
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-} from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 
 import styles from './index.less';
 
@@ -18,7 +11,7 @@ type SideMenuType = {
   displayRoutes: Array<any>;
 };
 
-class SideMenu extends React.Component<SideMenuType, SideMenuType> {
+class SideMenu extends React.Component<any, SideMenuType> {
   constructor(props: any) {
     super(props);
     this.generateRoutes = this.generateRoutes.bind(this);

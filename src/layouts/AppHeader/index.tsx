@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TiggerSide from './components/TiggerSide/index';
-import BreadCrumb from './components/BreadCrumb/index';
+import store from '@/store';
 
 type AppHeaderType = {
   collapsed: boolean;
@@ -9,6 +9,10 @@ type AppHeaderType = {
 };
 
 class AppHeader extends React.Component<AppHeaderType> {
+  state = {
+    isSideMenuCollapsed: store.getState().app.sideMenu,
+  };
+
   handleTiggerSideClick() {
     const { onTiggerSideClick } = this.props;
     onTiggerSideClick && onTiggerSideClick();
@@ -20,7 +24,6 @@ class AppHeader extends React.Component<AppHeaderType> {
           collapsed={this.props.collapsed}
           onClick={this.handleTiggerSideClick.bind(this)}
         />
-        {/* <BreadCrumb /> */}
       </>
     );
   }

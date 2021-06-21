@@ -38,19 +38,35 @@ class CardTitle extends React.Component {
 
 type I18nType = {
   language: string;
+  sideMenu: boolean;
 };
 
 class I18n extends React.Component<I18nType, I18nType> {
+  unsubscribeId: any;
+
   constructor(props: any) {
     super(props);
     this.state = {
-      language: 'zh-CN',
+      language: store.getState().app.language,
+      sideMenu: store.getState().app.sideMenu,
     };
+  }
+
+  componentDidMount() {
+    this.unsubscribeId = store.subscribe(() => {
+      this.setState({
+        language: store.getState().app.language,
+        sideMenu: store.getState().app.sideMenu,
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeId();
   }
 
   handleLanguageChange(e: any) {
     store.dispatch(toggleLanguage(e.target.value));
-    console.log(store.getState().app);
   }
 
   render() {
@@ -67,6 +83,10 @@ class I18n extends React.Component<I18nType, I18nType> {
             >
               <Radio.Button value="zh-CN">中文</Radio.Button>
               <Radio.Button value="en-EU">English</Radio.Button>
+              <Radio.Button value="current-language">
+                {this.state.language}
+                {this.state.sideMenu}
+              </Radio.Button>
             </Radio.Group>
           </Card>
         </div>

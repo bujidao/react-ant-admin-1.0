@@ -11,22 +11,36 @@ import AppMain from './AppMain/index';
 import store from '../store/index';
 import { toggleSideMenu } from '../store/app/index';
 
-class App extends React.Component {
-  state = {
-    collapsed: false,
-  };
+type AppType = {
+  isSideMenuCollapsed: boolean;
+};
+
+class App extends React.Component<AppType, AppType> {
+  unsubscribeId: any;
+
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      isSideMenuCollapsed: store.getState().app.sideMenu === 'collapsed',
+    };
+  }
 
   componentDidMount() {
-    this.setState({
-      collapsed: !store.getState().app.sideMenu,
+    this.unsubscribeId = store.subscribe(() => {
+      this.setState({
+        isSideMenuCollapsed: store.getState().app.sideMenu === 'collapsed',
+      });
     });
   }
 
+  componentWillUnmount() {
+    this.unsubscribeId();
+  }
+
   toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-    store.dispatch(toggleSideMenu(this.state.collapsed));
+    store.dispatch(
+      toggleSideMenu(this.state.isSideMenuCollapsed ? 'open' : 'collapsed'),
+    );
   };
 
   render() {
@@ -37,18 +51,19 @@ class App extends React.Component {
           className={styles['app-side']}
           trigger={null}
           collapsible
-          collapsed={this.state.collapsed}
+          collapsed={this.state.isSideMenuCollapsed} // 是否收起
           collapsedWidth="54"
         >
-          <Logo collapsed={this.state.collapsed} />
+          <Logo collapsed={this.state.isSideMenuCollapsed} />
           <SideMenu />
         </Sider>
         {/* side menu end */}
+
         <Layout className="site-layout">
           {/* header navigation */}
           <Header className={styles['app-header']} style={{ padding: 0 }}>
             <AppHeader
-              collapsed={this.state.collapsed}
+              collapsed={this.state.isSideMenuCollapsed}
               onTiggerSideClick={this.toggle}
             />
           </Header>

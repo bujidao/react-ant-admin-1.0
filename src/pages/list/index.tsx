@@ -36,7 +36,7 @@ class List extends React.Component {
       listData: [],
     };
     this.fitchData = this.fitchData.bind(this);
-    this.fitchData();
+    // this.fitchData();
   }
 
   public fitchData() {

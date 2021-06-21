@@ -14,7 +14,7 @@ export function render(oldRender: Function) {
     if (auth.isLogin) {
       oldRender();
     } else {
-      history.push('/store');
+      history.push('/');
       oldRender();
     }
   });
