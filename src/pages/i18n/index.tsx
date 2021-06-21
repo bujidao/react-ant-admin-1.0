@@ -41,37 +41,22 @@ type I18nType = {
 };
 
 class I18n extends React.Component<I18nType, I18nType> {
-  subscribe?: any;
-
   constructor(props: any) {
     super(props);
     this.state = {
       language: 'zh-CN',
     };
   }
-  componentDidMount() {
-    this.handleLanguageSubscribe();
-  }
 
   handleLanguageChange(e: any) {
     store.dispatch(toggleLanguage(e.target.value));
-  }
-
-  handleLanguageSubscribe = () => {
-    this.subscribe = store.subscribe(() => {
-      this.setState({});
-    });
-  };
-
-  componentWillUnmount() {
-    // this.subscribe()
+    console.log(store.getState().app);
   }
 
   render() {
     return (
       <div className={styles['i18n-container']}>
         <div style={{ textAlign: 'center' }}>
-          <div>adasds</div>
           <Card
             title={<CardTitle />}
             style={{ width: '50%', display: 'inline-block' }}
@@ -82,9 +67,6 @@ class I18n extends React.Component<I18nType, I18nType> {
             >
               <Radio.Button value="zh-CN">中文</Radio.Button>
               <Radio.Button value="en-EU">English</Radio.Button>
-              <Radio.Button value="en-EU2">
-                {/* {store.getState()} */}
-              </Radio.Button>
             </Radio.Group>
           </Card>
         </div>

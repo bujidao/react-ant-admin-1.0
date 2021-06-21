@@ -1,6 +1,3 @@
-// import language from './language';
-// import sideMenu from './side-menu';
-
 type initAppStateType = {
   language: string;
   sideMenu: boolean;

@@ -2,7 +2,8 @@ import React from 'react';
 import Comp1 from './comp1';
 import Comp2 from './comp2';
 import ReactMarkdown from 'react-markdown';
-import md from './index.md';
+import md from './README.md';
+import styles from './index.less';
 
 type Comon = {
   value: any;
@@ -26,18 +27,18 @@ class Compon extends React.Component<any, Comon> {
 
   render() {
     return (
-      <div>
+      <div className={styles.store}>
         <div className="markdown-article">
           <ReactMarkdown>{md}</ReactMarkdown>
         </div>
-        <br />
-        <input type="text" onChange={this.onChange} />
+        {/* <br /> */}
+        {/* <input type="text" onChange={this.onChange} />
         <br />
         {this.state.value}
         <hr />
         <Comp1></Comp1>
         <hr />
-        <Comp2></Comp2>
+        <Comp2></Comp2> */}
       </div>
     );
   }
