@@ -28,7 +28,7 @@ class SideMenu extends React.Component<any, SideMenuType> {
           menuList.push(
             <Menu.Item
               key={'menu-item-' + route.routes[0].path}
-              onClick={() => history.push(route.routes[0].path)}
+              onClick={() => this.handleMenuItemClick(route.routes[0])}
               icon={<UserOutlined />}
             >
               {route.routes[0].meta.title}
@@ -49,7 +49,7 @@ class SideMenu extends React.Component<any, SideMenuType> {
         menuList.push(
           <Menu.Item
             key={'menu-item-' + route.path}
-            onClick={() => history.push(route.path)}
+            onClick={() => this.handleMenuItemClick(route)}
             icon={<UserOutlined />}
           >
             {route.meta.title}
@@ -58,6 +58,15 @@ class SideMenu extends React.Component<any, SideMenuType> {
       }
     }
     return menuList;
+  }
+
+  handleMenuItemClick(route: any) {
+    try {
+      new URL(route.path);
+      window.open(route.path);
+    } catch (e) {
+      history.push(route.path);
+    }
   }
 
   // Filter out the routes that can be displayed in the sidebar
