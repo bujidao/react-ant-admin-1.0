@@ -13,6 +13,17 @@ export const getLanguage = () => {
   return 'zh-CN';
 };
 
+export const languageList = [
+  {
+    key: 'zh-CN',
+    label: '中文',
+  },
+  {
+    key: 'en-US',
+    label: 'English',
+  },
+];
+
 export const formatLocales = (data: any, preName?: string) => {
   let newObj: any = {};
   for (let key of Object.keys(data)) {
