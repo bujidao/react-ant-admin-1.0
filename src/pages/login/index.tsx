@@ -1,13 +1,21 @@
 import React from 'react';
 import styles from './index.less';
 import classNames from 'classnames';
+import Language from '@/components/Language';
+import { injectIntl } from 'umi';
+import { Button } from 'antd';
 
-class Login extends React.Component {
+type LoginType = {
+  intl: any;
+};
+
+class Login extends React.Component<LoginType> {
   constructor(props: any) {
     super(props);
   }
 
   render() {
+    const { intl } = this.props;
     return React.createElement(
       'div',
       {
@@ -23,7 +31,16 @@ class Login extends React.Component {
           {
             className: styles.title,
           },
-          'Login',
+          intl.formatMessage({
+            id: 'login.login',
+          }),
+          React.createElement(
+            Language,
+            {
+              className: styles['toggle-language'],
+            },
+            null,
+          ),
         ),
         React.createElement('input', {
           type: 'text',
@@ -45,7 +62,9 @@ class Login extends React.Component {
         }),
         React.createElement('input', {
           type: 'button',
-          value: 'Login',
+          value: intl.formatMessage({
+            id: 'login.login',
+          }),
           className: classNames(
             styles.input,
             styles.button,
@@ -53,9 +72,33 @@ class Login extends React.Component {
             styles.submit,
           ),
         }),
+        React.createElement(
+          'div',
+          {
+            className: styles.more,
+          },
+          React.createElement(
+            Button,
+            {
+              type: 'text',
+            },
+            intl.formatMessage({
+              id: 'login.register',
+            }),
+          ),
+          React.createElement(
+            Button,
+            {
+              type: 'text',
+            },
+            intl.formatMessage({
+              id: 'login.forget',
+            }),
+          ),
+        ),
       ),
     );
   }
 }
 
-export default Login;
+export default injectIntl(Login);

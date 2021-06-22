@@ -14,11 +14,19 @@
 }
 
 .title {
+  position: relative;
   text-align: center;
   font-size: 32px;
   color: #6b6b6b;
   margin-bottom: 30px;
   font-weight: 900;
+  .toggle-language {
+    position: absolute;
+    right: 0;
+    top: 0;
+    fill: #6b6b6b;
+    font-size: 18px;
+  }
 }
 
 input {
@@ -40,6 +48,11 @@ input {
 
 .button:active {
   box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+}
+
+.more {
+  display: flex;
+  justify-content: space-between;
 }
 
 .neumorphism {

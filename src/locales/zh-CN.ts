@@ -6,6 +6,11 @@ const locale = {
     welcome: `欢迎使用 ${defaultSettings.title}`,
     switchLanguage: '切换语言',
   },
+  login: {
+    login: '登录',
+    register: '注册',
+    forget: '忘记密码?',
+  },
   button: {
     default: '默认按钮',
     danger: '危险按钮',
