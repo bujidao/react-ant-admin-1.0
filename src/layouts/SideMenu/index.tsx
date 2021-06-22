@@ -15,8 +15,15 @@ class SideMenu extends React.Component<any, SideMenuType> {
   constructor(props: any) {
     super(props);
     this.generateRoutes = this.generateRoutes.bind(this);
+    let drawRoutes: any = [];
+    for (let i in routes) {
+      const route = routes[i];
+      if (route.component === '@/layouts/index') {
+        drawRoutes = drawRoutes.concat(routes[i].routes);
+      }
+    }
     this.state = {
-      displayRoutes: this.generateRoutes(routes[0].routes),
+      displayRoutes: this.generateRoutes(drawRoutes),
     };
   }
 

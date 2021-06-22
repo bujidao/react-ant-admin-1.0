@@ -14,7 +14,7 @@ export function render(oldRender: Function) {
     if (auth.isLogin) {
       oldRender();
     } else {
-      history.push('/i18n');
+      // history.push('/login');
       oldRender();
     }
   });
@@ -32,7 +32,11 @@ type onRouteChangeParams = {
  */
 export const onRouteChange = (params: onRouteChangeParams) => {
   const { routes, matchedRoutes, location, action } = params;
-  if (matchedRoutes.length) {
+  // debugger
+  if (
+    matchedRoutes.length &&
+    matchedRoutes[matchedRoutes.length - 1].route.meta
+  ) {
     // set page title
     const pageTitle = getPageTitle(
       matchedRoutes[matchedRoutes.length - 1].route.meta.title || '',
