@@ -2,6 +2,8 @@ import React from 'react';
 
 import TiggerSide from './components/TiggerSide/index';
 import store from '@/store';
+import Language from '@/components/Language/index';
+import styles from './index.less';
 
 type AppHeaderType = {
   collapsed: boolean;
@@ -19,12 +21,13 @@ class AppHeader extends React.Component<AppHeaderType> {
   }
   render() {
     return (
-      <>
+      <div className={styles.header}>
         <TiggerSide
           collapsed={this.props.collapsed}
           onClick={this.handleTiggerSideClick.bind(this)}
         />
-      </>
+        <Language className={styles.icon} />
+      </div>
     );
   }
 }
