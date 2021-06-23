@@ -4,12 +4,12 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 
 import './index.less';
 
-type TiggerSideType = {
+interface TiggerSideParams {
   collapsed: boolean;
   onClick: Function;
-};
+}
 
-class TiggerSide extends React.Component<TiggerSideType> {
+class TiggerSide extends React.Component<TiggerSideParams> {
   handleClick() {
     const { onClick } = this.props;
     onClick && onClick();

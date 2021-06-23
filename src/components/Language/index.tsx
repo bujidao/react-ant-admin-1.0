@@ -7,32 +7,12 @@ import store from '@/store';
 import { toggleLanguage } from '@/store/app/index';
 import { languageList } from '@/locales/index';
 
-// const menu = (
-//   <Menu>
-//     <Menu.Item>
-//       <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-//         1st menu item
-//       </a>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-//         2nd menu item
-//       </a>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-//         3rd menu item
-//       </a>
-//     </Menu.Item>
-//   </Menu>
-// );
-
-type LanguageListType = {
+interface LanguageListParams {
   languageList: any;
   onLanguageSelect: Function;
-};
+}
 
-class LanguageList extends React.PureComponent<LanguageListType> {
+class LanguageList extends React.PureComponent<LanguageListParams> {
   constructor(props: any) {
     super(props);
   }

@@ -20,12 +20,12 @@ export function render(oldRender: Function) {
   });
 }
 
-type onRouteChangeParams = {
+interface onRouteChangeParams {
   routes: any;
   matchedRoutes: any;
   location: any;
   action: any;
-};
+}
 
 /**
  * onRouteChange

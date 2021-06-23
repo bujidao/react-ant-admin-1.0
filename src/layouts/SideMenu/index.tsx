@@ -7,11 +7,11 @@ import styles from './index.less';
 
 import routes from '@/routes/index';
 
-type SideMenuType = {
+interface SideMenuTypeParams {
   displayRoutes: Array<any>;
-};
+}
 
-class SideMenu extends React.Component<any, SideMenuType> {
+class SideMenu extends React.Component<any, SideMenuTypeParams> {
   constructor(props: any) {
     super(props);
     this.generateRoutes = this.generateRoutes.bind(this);

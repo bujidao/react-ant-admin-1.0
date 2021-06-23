@@ -5,12 +5,12 @@ import store from '@/store';
 import Language from '@/components/Language/index';
 import styles from './index.less';
 
-type AppHeaderType = {
+interface AppHeaderParams {
   collapsed: boolean;
   onTiggerSideClick: Function;
-};
+}
 
-class AppHeader extends React.Component<AppHeaderType> {
+class AppHeader extends React.Component<AppHeaderParams> {
   state = {
     isSideMenuCollapsed: store.getState().app.sideMenu,
   };

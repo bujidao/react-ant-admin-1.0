@@ -11,12 +11,12 @@ declare module '*.svg' {
 
 // redux
 // detail: https://github.com/redux-utilities/flux-standard-action
-type ReduxActionType = {
+interface ReduxActionType {
   type: string;
   payload?: any;
   error?: boolean;
   meta?: any;
-};
+}
 
 // axios
 

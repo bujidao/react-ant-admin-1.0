@@ -7,12 +7,13 @@ import { setLocale } from 'umi';
  * collapsed 折叠
  */
 type sideMenuType = 'open' | 'collapsed';
-type initAppStateType = {
+
+interface initAppStateParams {
   language: string;
   sideMenu: sideMenuType;
-};
+}
 
-const initAppState: initAppStateType = {
+const initAppState: initAppStateParams = {
   language: getLanguage(),
   sideMenu: Cookies.get('side-menu'),
 };

@@ -11,11 +11,11 @@ import AppMain from './AppMain/index';
 import store from '../store/index';
 import { toggleSideMenu } from '../store/app/index';
 
-type AppType = {
+interface AppParams {
   isSideMenuCollapsed: boolean;
-};
+}
 
-class App extends React.Component<AppType, AppType> {
+class App extends React.Component<AppParams, AppParams> {
   unsubscribeId: any;
 
   constructor(props: any) {

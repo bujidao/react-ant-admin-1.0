@@ -5,11 +5,11 @@ import Language from '@/components/Language';
 import { injectIntl } from 'umi';
 import { Button } from 'antd';
 
-type LoginType = {
+interface LoginParams {
   intl: any;
-};
+}
 
-class Login extends React.Component<LoginType> {
+class Login extends React.Component<LoginParams> {
   constructor(props: any) {
     super(props);
   }
