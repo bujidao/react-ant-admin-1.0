@@ -23,7 +23,7 @@ class LanguageList extends React.PureComponent<LanguageListParams> {
 
   render() {
     return (
-      <Menu>
+      <Menu selectable selectedKeys={[store.getState().app.language]}>
         {this.props.languageList &&
           this.props.languageList.map((item: any) => (
             <Menu.Item onClick={() => this.handleClick(item)} key={item.key}>
