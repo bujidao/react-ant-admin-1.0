@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './index.less';
 import classNames from 'classnames';
 import Language from '@/components/Language';
-import { injectIntl } from 'umi';
+import { history, injectIntl } from 'umi';
 import { Button } from 'antd';
 import { login } from '@/api/user';
 import store from '@/store';
@@ -22,6 +22,7 @@ class Login extends React.Component<LoginParams> {
     const params = Object.assign({}, this.state);
     login(params).then((res) => {
       store.dispatch(setLoginToken(res.data.token));
+      history.replace('/');
     });
   }
 

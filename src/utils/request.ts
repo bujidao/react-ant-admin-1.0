@@ -1,3 +1,4 @@
+import { history } from 'umi';
 import store from '@/store';
 import axios from 'axios';
 
@@ -33,7 +34,7 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   (config) => {
-    if (store.getState().user.token) {
+    if (store.getState().user.token && !config.headers['X-Token']) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
@@ -63,6 +64,10 @@ service.interceptors.response.use(
    */
   (response) => {
     const res = response.data;
+    if (res.code === 20001) {
+      history.replace('/login');
+      return;
+    }
     return res;
   },
   (error) => {

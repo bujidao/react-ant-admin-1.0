@@ -1,8 +1,12 @@
 import mockjs from 'mockjs';
 
-const sucessRes = (data: any, message: string = 'success') => {
+const sucessRes = (
+  data: any,
+  message: string = 'success',
+  code?: number | undefined,
+) => {
   const res = {
-    code: 200,
+    code: code || 200,
     message: message,
     data: {
       ...data,
@@ -45,12 +49,15 @@ export default {
     const xToken = req.headers['x-token'];
     const xTokenArr = xToken.split('_');
     if (xTokenArr[xTokenArr.length - 1] != h) {
-      res.send(sucessRes('', 'token已过期'));
+      res.send(sucessRes('', 'token已过期', 20001));
+      return;
     }
-    switch (xToken) {
+    const checkedToken = xTokenArr[0] + '_' + xTokenArr[1];
+    switch (checkedToken) {
       case 'admin_token':
         res.send(
           sucessRes({
+            id: '1',
             username: '周杰伦',
             avatar:
               'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
@@ -61,6 +68,7 @@ export default {
       case 'guest_token':
         res.send(
           sucessRes({
+            id: '2',
             username: '张三',
             avatar:
               'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
@@ -69,8 +77,8 @@ export default {
         );
         break;
       default:
+        res.send(sucessRes('', 'token不合法'));
         break;
     }
-    res.send(sucessRes('', 'token不合法'));
   },
 };

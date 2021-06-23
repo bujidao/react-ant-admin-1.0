@@ -7,6 +7,7 @@ import store from '@/store';
 import { setPageRoutes } from '@/store/app/index';
 import { getToken } from '@/utils/auth';
 import { userInfo } from '@/api/user';
+import { setUserInfo } from '@/store/user/index';
 
 /**
  * render
@@ -53,6 +54,7 @@ export const onRouteChange = (params: onRouteChangeParams) => {
   /**
    * 路由校验
    */
+  const whiteList = ['/login', '/auth-redirect']; // no redirect whitelist
   let currentRoute: any = '';
   if (matchedRoutes.length === 1) {
     currentRoute = matchedRoutes[0].route;
@@ -66,8 +68,14 @@ export const onRouteChange = (params: onRouteChangeParams) => {
     if (hasUserInfo) {
     } else {
       userInfo().then((res) => {
-        console.log(res);
+        store.dispatch(setUserInfo(res.data));
       });
+    }
+  } else {
+    if (whiteList.indexOf(currentRoute.path) !== -1) {
+      // don`t need to login
+    } else {
+      history.replace('/login');
     }
   }
 };
