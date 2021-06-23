@@ -12,3 +12,16 @@ export const login = (params?: any) => {
     data: params,
   });
 };
+
+/**
+ * 获取用户信息
+ * @param params
+ * @returns
+ */
+export const userInfo = (params?: any) => {
+  return request({
+    url: '/api/user/info',
+    method: 'post',
+    data: params,
+  });
+};

@@ -5,6 +5,8 @@ import Language from '@/components/Language';
 import { injectIntl } from 'umi';
 import { Button } from 'antd';
 import { login } from '@/api/user';
+import store from '@/store';
+import { setLoginToken } from '@/store/user/index';
 
 interface LoginParams {
   intl: any;
@@ -19,7 +21,7 @@ class Login extends React.Component<LoginParams> {
   onSubmit() {
     const params = Object.assign({}, this.state);
     login(params).then((res) => {
-      console.log(res);
+      store.dispatch(setLoginToken(res.data.token));
     });
   }
 

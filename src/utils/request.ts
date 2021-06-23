@@ -1,3 +1,4 @@
+import store from '@/store';
 import axios from 'axios';
 
 // interface MyMap {
@@ -32,6 +33,12 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   (config) => {
+    if (store.getState().user.token) {
+      // let each request carry token
+      // ['X-Token'] is a custom headers key
+      // please modify it according to the actual situation
+      config.headers['X-Token'] = store.getState().user.token;
+    }
     // config.baseURL = getUrl(config.apiModel)
     return config;
   },
