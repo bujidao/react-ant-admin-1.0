@@ -4,14 +4,23 @@ import classNames from 'classnames';
 import Language from '@/components/Language';
 import { injectIntl } from 'umi';
 import { Button } from 'antd';
+import { login } from '@/api/user';
 
 interface LoginParams {
   intl: any;
 }
 
 class Login extends React.Component<LoginParams> {
-  constructor(props: any) {
-    super(props);
+  state = {
+    username: 'admin',
+    password: '111111',
+  };
+
+  onSubmit() {
+    const params = Object.assign({}, this.state);
+    login(params).then((res) => {
+      console.log(res);
+    });
   }
 
   render() {
@@ -50,6 +59,13 @@ class Login extends React.Component<LoginParams> {
             styles.name,
             styles['neumorphism-inset'],
           ),
+          autoComplete: 'off',
+          defaultValue: this.state.username,
+          onInput: (e: any) => {
+            this.setState({
+              username: e.target.value,
+            });
+          },
         }),
         React.createElement('input', {
           type: 'password',
@@ -59,6 +75,8 @@ class Login extends React.Component<LoginParams> {
             styles.password,
             styles['neumorphism-inset'],
           ),
+          defaultValue: this.state.password,
+          autoComplete: 'off',
         }),
         React.createElement('input', {
           type: 'button',
@@ -71,6 +89,7 @@ class Login extends React.Component<LoginParams> {
             styles['neumorphism'],
             styles.submit,
           ),
+          onClick: this.onSubmit.bind(this),
         }),
         React.createElement(
           'div',
