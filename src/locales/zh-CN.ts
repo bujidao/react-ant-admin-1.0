@@ -5,6 +5,7 @@ const locale = {
   app: {
     welcome: `欢迎使用 ${defaultSettings.title}`,
     switchLanguage: '切换语言',
+    dashboard: '首页',
   },
   login: {
     login: '登录',

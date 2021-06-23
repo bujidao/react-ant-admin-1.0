@@ -1,51 +1,61 @@
 import React from 'react';
 import { Breadcrumb } from 'antd';
-
 import styles from './index.less';
-import routes from '../../../../routes/index';
+import store from '@/store';
+import { injectIntl } from 'umi';
 
-class BreadCrumb extends React.Component {
-  constructor(props: any) {
-    super(props);
-    this.flattenRoutes = this.flattenRoutes.bind(this);
-    this.getBreadcrumbs = this.getBreadcrumbs.bind(this);
+interface BreadCrumbParams {
+  intl: any;
+}
 
-    let flattenRoutesList = this.flattenRoutes(routes);
-    let location = window.location;
-    console.log(location);
+class BreadCrumb extends React.Component<BreadCrumbParams> {
+  unsubscribeId: any;
 
-    this.getBreadcrumbs(flattenRoutesList, location);
+  componentDidMount() {
+    this.unsubscribeId = store.subscribe(() => {
+      this.setState({});
+    });
   }
 
-  flattenRoutes(arr: any) {
-    return arr.reduce((prev: any = [], item: any) => {
-      return prev.concat(
-        Array.isArray(item.routes) ? this.flattenRoutes(item.routes) : item,
-      );
-    }, []);
-  }
-
-  getBreadcrumbs(flattenRoutes: Array<any>, location: any) {
-    // 初始化匹配数组match
-    let matches = [];
+  formatRouteInfo(route: any) {
+    let label: string = '';
+    if (route.path === '/') {
+      label = this.props.intl.formatMessage({
+        id: 'app.dashboard',
+      });
+    } else {
+      if (route.meta && route.meta.title) {
+        label = route.meta.title;
+      } else {
+        label = route.path.replace('/', '');
+      }
+    }
+    return {
+      label: label,
+      link: route.path,
+    };
   }
 
   render() {
     return (
       <div className={styles['breadcrumb-wrapper']}>
-        {/* <Breadcrumb itemRender={this.itemRender} routes={breadcrumb}> */}
-        {/* <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <a href="">Application Center</a>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <a href="">Application List</a>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>An Application</Breadcrumb.Item> */}
-        {/* </Breadcrumb> */}
+        <Breadcrumb>
+          {store.getState().app.pageRoutes &&
+            store
+              .getState()
+              .app.pageRoutes.map((route: any) => (
+                <Breadcrumb.Item key={route.route.path}>
+                  {this.formatRouteInfo(route.route).label}
+                </Breadcrumb.Item>
+              ))}
+        </Breadcrumb>
       </div>
     );
   }
+
+  componentWillUnmount() {
+    this.unsubscribeId();
+  }
 }
 
-export default BreadCrumb;
+export default injectIntl(BreadCrumb);
