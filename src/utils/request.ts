@@ -1,6 +1,7 @@
 import { history } from 'umi';
 import store from '@/store';
 import axios from 'axios';
+import { removeToken, getToken } from '@/utils/auth';
 
 // interface MyMap {
 //   [key: string]: any;
@@ -64,9 +65,12 @@ service.interceptors.response.use(
    */
   (response) => {
     const res = response.data;
+    // token过期
     if (res.code === 20001) {
+      removeToken();
+      console.log(getToken());
       history.replace('/login');
-      return;
+      return Promise.reject();
     }
     return res;
   },

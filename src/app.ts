@@ -7,13 +7,21 @@ import store from '@/store';
 import { setPageRoutes } from '@/store/app/index';
 import { getToken } from '@/utils/auth';
 import { userInfo } from '@/api/user';
+import { getDynamicRoutes } from '@/api/routes';
 import { setUserInfo } from '@/store/user/index';
+
+let dynamicRoutes = [];
 
 /**
  * render
  */
 export function render(oldRender: Function) {
-  oldRender();
+  getDynamicRoutes().then((res) => {
+    console.log(res);
+    dynamicRoutes = res.data;
+    oldRender();
+  });
+  // oldRender();
   // fetch('/user').then((auth: any) => {
   //   if (auth.isLogin) {
   //     oldRender();
@@ -68,6 +76,7 @@ export const onRouteChange = (params: onRouteChangeParams) => {
     if (hasUserInfo) {
     } else {
       userInfo().then((res) => {
+        console.log(res);
         store.dispatch(setUserInfo(res.data));
       });
     }

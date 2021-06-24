@@ -54,27 +54,27 @@ const routes = [
           },
         ],
       },
-      {
-        path: '/table',
-        component: '@/pages/table',
-        meta: {
-          title: '表格',
-        },
-      },
-      {
-        path: '/about',
-        component: '@/pages/about',
-        meta: {
-          title: '关于我们',
-        },
-      },
-      {
-        path: '/list',
-        component: '@/pages/list',
-        meta: {
-          title: '列表测试',
-        },
-      },
+      // {
+      //   path: '/table',
+      //   component: '@/pages/table',
+      //   meta: {
+      //     title: '表格',
+      //   },
+      // },
+      // {
+      //   path: '/about',
+      //   component: '@/pages/about',
+      //   meta: {
+      //     title: '关于我们',
+      //   },
+      // },
+      // {
+      //   path: '/list',
+      //   component: '@/pages/list',
+      //   meta: {
+      //     title: '列表测试',
+      //   },
+      // },
       {
         path: '/i18n',
         component: '@/pages/i18n',
