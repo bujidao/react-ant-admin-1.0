@@ -13,7 +13,7 @@ interface AppHeaderParams {
 
 class AppHeader extends React.Component<AppHeaderParams> {
   state = {
-    isSideMenuCollapsed: store.getState().app.sideMenu,
+    isSideMenuCollapsed: store.getState().app.sideMenuState,
   };
 
   handleTiggerSideClick() {

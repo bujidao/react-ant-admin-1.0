@@ -4,32 +4,36 @@ import getPageTitle from '@/utils/get-page-title';
 
 import './styles/index.less';
 import store from '@/store';
-import { setPageRoutes } from '@/store/app/index';
+import { setPageRoutes, setSideMenu } from '@/store/app/index';
 import { getToken } from '@/utils/auth';
 import { userInfo } from '@/api/user';
 import { getDynamicRoutes } from '@/api/routes';
 import { setUserInfo } from '@/store/user/index';
 
-let dynamicRoutes = [];
+let dynamicRoutes: any[] = [];
 
 /**
- * render
+ * 修改路由
+ *
+ * 直接修改routes，不需要返回
+ */
+
+export const patchRoutes = ({ routes }) => {
+  for (let route of routes) {
+    if (route.path === '/') {
+      store.dispatch(setSideMenu(route.routes));
+    }
+  }
+};
+
+/**
+ * 覆写 render
  */
 export function render(oldRender: Function) {
   getDynamicRoutes().then((res) => {
-    console.log(res);
     dynamicRoutes = res.data;
     oldRender();
   });
-  // oldRender();
-  // fetch('/user').then((auth: any) => {
-  //   if (auth.isLogin) {
-  //     oldRender();
-  //   } else {
-  //     // history.push('/login');
-  //     oldRender();
-  //   }
-  // });
 }
 
 interface onRouteChangeParams {
@@ -40,7 +44,7 @@ interface onRouteChangeParams {
 }
 
 /**
- * onRouteChange
+ * 在初始加载和路由切换时做一些事情
  */
 export const onRouteChange = (params: onRouteChangeParams) => {
   const { routes, matchedRoutes, location, action } = params;

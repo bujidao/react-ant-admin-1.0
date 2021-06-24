@@ -6,18 +6,20 @@ import { Route, setLocale } from 'umi';
  * open 打开
  * collapsed 折叠
  */
-type sideMenuType = 'open' | 'collapsed';
+type sideMenuStateType = 'open' | 'collapsed';
 
 interface initAppStateParams {
   language: string;
-  sideMenu: sideMenuType;
+  sideMenuState: sideMenuStateType;
   pageRoutes: Route | undefined;
+  sideMenu: string[];
 }
 
 const initAppState: initAppStateParams = {
   language: getLanguage(),
-  sideMenu: Cookies.get('side-menu'),
+  sideMenuState: Cookies.get('side-menu'),
   pageRoutes: undefined,
+  sideMenu: [],
 };
 
 const appReducer = (state = initAppState, action: ReduxActionType) => {
@@ -30,16 +32,21 @@ const appReducer = (state = initAppState, action: ReduxActionType) => {
         ...state,
         language: newLanguage,
       };
-    case 'TOGGLE_SIDE_MENU':
+    case 'TOGGLE_SIDE_MENU_STATE':
       Cookies.set('side-menu', action.payload);
       return {
         ...state,
-        sideMenu: action.payload,
+        sideMenuState: action.payload,
       };
     case 'SET_PAGE_ROUTES':
       return {
         ...state,
         pageRoutes: action.payload,
+      };
+    case 'SET_SIDE_MENU':
+      return {
+        ...state,
+        sideMenu: action.payload,
       };
     default:
       return state;
@@ -61,20 +68,41 @@ export const toggleLanguage = (value: string): ReduxActionType => {
 
 /**
  * action
- * sidemenu
+ * toggle side menu state
  * @param value
  * @returns
  */
-export const toggleSideMenu = (value: sideMenuType): ReduxActionType => {
+export const toggleSideMenuState = (
+  value: sideMenuStateType,
+): ReduxActionType => {
   return {
-    type: 'TOGGLE_SIDE_MENU',
+    type: 'TOGGLE_SIDE_MENU_STATE',
     payload: value,
   };
 };
 
+/**
+ * action
+ * set current page route
+ * @param value
+ * @returns
+ */
 export const setPageRoutes = (value: any): ReduxActionType => {
   return {
     type: 'SET_PAGE_ROUTES',
+    payload: value,
+  };
+};
+
+/**
+ * action
+ * set side menu list
+ * @param value
+ * @returns
+ */
+export const setSideMenu = (value: any): ReduxActionType => {
+  return {
+    type: 'SET_SIDE_MENU',
     payload: value,
   };
 };

@@ -2,10 +2,9 @@ import React from 'react';
 import { Menu } from 'antd';
 import { history } from 'umi';
 import { UserOutlined } from '@ant-design/icons';
-
 import styles from './index.less';
-
 import routes from '@/routes/index';
+import store from '@/store';
 
 interface SideMenuTypeParams {
   displayRoutes: Array<any>;
@@ -16,14 +15,16 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
     super(props);
     this.generateRoutes = this.generateRoutes.bind(this);
     let drawRoutes: any = [];
-    for (let i in routes) {
-      const route = routes[i];
-      if (route.component === '@/layouts/index') {
-        drawRoutes = drawRoutes.concat(routes[i].routes);
-      }
-    }
+    // for (let i in routes) {
+    //   const route = routes[i];
+    //   if (route.component === '@/layouts/index') {
+    //     drawRoutes = drawRoutes.concat(routes[i].routes);
+    //   }
+    // }
+    // console.log('adsfasdf')
+    // console.log(store.getState().app.sideMenu)
     this.state = {
-      displayRoutes: this.generateRoutes(drawRoutes),
+      displayRoutes: this.generateRoutes(store.getState().app.sideMenu),
     };
   }
 
@@ -82,6 +83,9 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
     let res: any = [];
     for (let route of routes) {
       if (route.hidden) {
+        continue;
+      }
+      if (!route.path) {
         continue;
       }
 

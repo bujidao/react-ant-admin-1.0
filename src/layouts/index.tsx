@@ -9,7 +9,7 @@ import Logo from './Logo/index';
 import AppHeader from './AppHeader/index';
 import AppMain from './AppMain/index';
 import store from '../store/index';
-import { toggleSideMenu } from '../store/app/index';
+import { toggleSideMenuState } from '../store/app/index';
 
 interface AppParams {
   isSideMenuCollapsed: boolean;
@@ -21,14 +21,14 @@ class App extends React.Component<AppParams, AppParams> {
   constructor(props: any) {
     super(props);
     this.state = {
-      isSideMenuCollapsed: store.getState().app.sideMenu === 'collapsed',
+      isSideMenuCollapsed: store.getState().app.sideMenuState === 'collapsed',
     };
   }
 
   componentDidMount() {
     this.unsubscribeId = store.subscribe(() => {
       this.setState({
-        isSideMenuCollapsed: store.getState().app.sideMenu === 'collapsed',
+        isSideMenuCollapsed: store.getState().app.sideMenuState === 'collapsed',
       });
     });
   }
@@ -39,7 +39,9 @@ class App extends React.Component<AppParams, AppParams> {
 
   toggle = () => {
     store.dispatch(
-      toggleSideMenu(this.state.isSideMenuCollapsed ? 'open' : 'collapsed'),
+      toggleSideMenuState(
+        this.state.isSideMenuCollapsed ? 'open' : 'collapsed',
+      ),
     );
   };
 
