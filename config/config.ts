@@ -9,15 +9,25 @@ const { REACT_APP_ENV } = process.env;
 export default defineConfig({
   base: '/',
   title: settings.title,
+  // dynamicImport: {
+  //   loading: '@/pages/loading/index',
+  // },
   nodeModulesTransform: {
     type: 'none',
     exclude: [],
+  },
+  cssLoader: {
+    localsConvention: 'camelCase',
   },
   theme: theme,
   routes: routes,
   proxy: proxy[REACT_APP_ENV || 'dev'],
   ssr: {
     devServerRender: false,
+  },
+  devServer: {
+    port: 9327,
+    host: '0.0.0.0',
   },
   fastRefresh: {},
   targets: {
