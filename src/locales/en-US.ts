@@ -11,6 +11,7 @@ const locale = {
     login: 'Login',
     register: 'Register',
     forget: 'Forget?',
+    logout: 'Log Out',
   },
   button: {
     default: 'Default Button',

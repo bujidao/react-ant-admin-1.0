@@ -11,6 +11,7 @@ const locale = {
     login: '登录',
     register: '注册',
     forget: '忘记密码?',
+    logout: '登出',
   },
   button: {
     default: '默认按钮',

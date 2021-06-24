@@ -48,7 +48,6 @@ class CardTitle extends React.Component<CardTitleType> {
 }
 
 type I18nType = {
-  language: string;
   intl: any;
 };
 
@@ -57,16 +56,11 @@ class I18n extends React.Component<I18nType> {
 
   constructor(props: any) {
     super(props);
-    this.state = {
-      language: store.getState().app.language,
-    };
   }
 
   componentDidMount() {
     this.unsubscribeId = store.subscribe(() => {
-      this.setState({
-        language: store.getState().app.language,
-      });
+      this.setState({});
     });
   }
 
@@ -88,7 +82,7 @@ class I18n extends React.Component<I18nType> {
             style={{ width: '50%', display: 'inline-block' }}
           >
             <Radio.Group
-              defaultValue={this.props.language}
+              defaultValue={store.getState().app.language}
               onChange={this.handleLanguageChange}
             >
               <Radio.Button value="zh-CN">中文</Radio.Button>
@@ -98,7 +92,7 @@ class I18n extends React.Component<I18nType> {
         </div>
         <div style={{ marginTop: '20px' }}>
           <Row>
-            <Col span={12}>
+            <Col span={24}>
               <Button type="default">
                 {this.props.intl.formatMessage({
                   id: 'button.default',
@@ -120,7 +114,6 @@ class I18n extends React.Component<I18nType> {
                 })}
               </Button>
             </Col>
-            <Col span={12}></Col>
           </Row>
         </div>
       </div>
