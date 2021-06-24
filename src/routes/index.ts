@@ -54,6 +54,14 @@ const routes = [
           },
         ],
       },
+      {
+        path: '/loading',
+        component: '@/pages/loading',
+        hidden: true,
+        meta: {
+          title: '加载页面',
+        },
+      },
       // {
       //   path: '/table',
       //   component: '@/pages/table',
@@ -101,7 +109,7 @@ const routes = [
         path: '/external-link',
         routes: [
           {
-            path: 'https://github.com/PanJiaChen/vue-element-admin',
+            path: 'https://github.com/bujidao/react-ant-admin-1.0',
             meta: { title: 'External Link', icon: 'link' },
           },
         ],
