@@ -30,10 +30,11 @@ export const patchRoutes = ({ routes }) => {
  * 覆写 render
  */
 export function render(oldRender: Function) {
-  getDynamicRoutes().then((res) => {
-    dynamicRoutes = res.data;
-    oldRender();
-  });
+  // getDynamicRoutes().then((res) => {
+  //   dynamicRoutes = res.data;
+  //   oldRender();
+  // });
+  oldRender();
 }
 
 interface onRouteChangeParams {
@@ -80,7 +81,6 @@ export const onRouteChange = (params: onRouteChangeParams) => {
     if (hasUserInfo) {
     } else {
       userInfo().then((res) => {
-        console.log(res);
         store.dispatch(setUserInfo(res.data));
       });
     }

@@ -5,6 +5,7 @@ import store from '@/store';
 import Language from '@/components/Language/index';
 import BreadCrumb from './components/BreadCrumb/index';
 import styles from './index.less';
+import UserAvatar from './components/UserAvatar';
 
 interface AppHeaderParams {
   collapsed: boolean;
@@ -30,7 +31,10 @@ class AppHeader extends React.Component<AppHeaderParams> {
           />
           <BreadCrumb />
         </div>
-        <Language className={styles.icon} />
+        <div>
+          <Language className={styles.icon} />
+          <UserAvatar />
+        </div>
       </div>
     );
   }
