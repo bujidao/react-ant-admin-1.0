@@ -8,7 +8,7 @@ interface initUserStateParams {
   id: string;
   username: string;
   avatar: string;
-  roles: any;
+  roles: string[];
 }
 
 const initUserState: initUserStateParams = {
@@ -31,6 +31,16 @@ const userReducer = (state = initUserState, action: ReduxActionType) => {
         ...state,
         ...action.payload,
       };
+    case 'SET_USET_LOGOUT':
+      removeToken();
+      return {
+        ...state,
+        token: getToken(),
+        id: '',
+        username: '',
+        avatar: '',
+        roles: [],
+      };
     default:
       return state;
   }
@@ -48,6 +58,12 @@ export const setUserInfo = (value: any): ReduxActionType => {
   return {
     type: 'SET_USET_INFO',
     payload: value,
+  };
+};
+
+export const setUserLogout = (): ReduxActionType => {
+  return {
+    type: 'SET_USET_LOGOUT',
   };
 };
 
