@@ -7,56 +7,23 @@
   <title>Document</title>
 </head>
 <body>
-  <style>
-   body{
-	background-color: #e0e0e0;
-}
-.loader,
-.loader:before,
-.loader:after {
-  border-radius: 50%;
-}
-.loader {
-  font-size: 11px;
-  text-indent: -99999em;
-  margin: 30% auto;
-  position: relative;
-  width: 10em;
-  height: 10em;
-  box-shadow:  4px 4px 10px #bebebe,
-              -4px -4px 10px #ffffff;
-}
-.loader:after,
-.loader:before{
-  position: absolute;
-  top: -5em;
-  content: '';
-  width: 10em;
-  height: 20em;
-	background-color: #e0e0e0;
-}
-.loader:before {
-  border-radius: 10em 0 0 10em;
-  left: -5em;
-  transform-origin: 10em 10em;
-  animation: load2 2s infinite 1.5s;
-}
-.loader:after {
-  border-radius: 0;
-  left: 5em;
-  transform-origin: 10px 10em;
-  animation: load2 2s infinite;
-}
-@keyframes load2 {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-    </style>
-
-    <div class="loader">加载中...</div>
+  <div id="app">
+    <button onclick="handleHideBox()">按钮</button>
+    <button onclick="handleIsBoxHide()">是否隐藏</button>
+    <div id="box">看见我了</div>
+    <div id="res"></div>
+  </div>
 </body>
+<script>
+  var dom = document.getElementById('box')
+  var res = document.getElementById('res')
+  function handleHideBox() {
+    dom.style.display = 'none'
+  }
+
+  function handleIsBoxHide() {
+    var isDisplay = window.getComputedStyle(dom).display === 'none'
+    res.innerHTML = isDisplay
+  }
+</script>
 </html>

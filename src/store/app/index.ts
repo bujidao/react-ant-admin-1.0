@@ -15,6 +15,12 @@ interface initAppStateParams {
   sideMenu: string[];
 }
 
+/**
+ * language: language
+ * sideMenuState: open / collapsed
+ * pageRoutes: current page route path, main used in breadcrumb
+ * sideMenu: the route lists of sideMenu
+ */
 const initAppState: initAppStateParams = {
   language: getLanguage(),
   sideMenuState: Cookies.get('side-menu'),
@@ -55,7 +61,7 @@ const appReducer = (state = initAppState, action: ReduxActionType) => {
 
 /**
  * action
- * language
+ * toggle language
  * @param value
  * @returns
  */

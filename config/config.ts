@@ -42,4 +42,5 @@ export default defineConfig({
     baseSeparator: '-',
     // title: false
   },
+  chainWebpack(memo, { env, webpack, createCSSRule }) {},
 });

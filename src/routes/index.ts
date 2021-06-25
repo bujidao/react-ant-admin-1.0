@@ -32,6 +32,13 @@ const routes = [
           icon: '',
         },
       },
+      // {
+      //   path: '/table',
+      //   component: '@/pages/table',
+      //   meta: {
+      //     title: '表格',
+      //   },
+      // },
       {
         path: '/user',
         meta: {
@@ -62,13 +69,6 @@ const routes = [
           title: '加载页面',
         },
       },
-      // {
-      //   path: '/table',
-      //   component: '@/pages/table',
-      //   meta: {
-      //     title: '表格',
-      //   },
-      // },
       {
         path: '/i18n',
         component: '@/pages/i18n',
