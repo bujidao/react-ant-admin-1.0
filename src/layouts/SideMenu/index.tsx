@@ -3,28 +3,23 @@ import { Menu } from 'antd';
 import { history } from 'umi';
 import { UserOutlined } from '@ant-design/icons';
 import styles from './index.less';
-import routes from '@/routes/index';
 import store from '@/store';
 
 interface SideMenuTypeParams {
   displayRoutes: Array<any>;
+  currentMenuSelect: string;
 }
 
 class SideMenu extends React.Component<any, SideMenuTypeParams> {
+  readonly menuItemKeyPre: string = 'menu-item-key-';
+  readonly submenuItemKeyPre: string = 'submenu-item-key-';
+
   constructor(props: any) {
     super(props);
     this.generateRoutes = this.generateRoutes.bind(this);
-    let drawRoutes: any = [];
-    // for (let i in routes) {
-    //   const route = routes[i];
-    //   if (route.component === '@/layouts/index') {
-    //     drawRoutes = drawRoutes.concat(routes[i].routes);
-    //   }
-    // }
-    // console.log('adsfasdf')
-    // console.log(store.getState().app.sideMenu)
     this.state = {
       displayRoutes: this.generateRoutes(store.getState().app.sideMenu),
+      currentMenuSelect: this.menuItemKeyPre + history.location.pathname,
     };
   }
 
@@ -35,7 +30,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
         if (route.routes.length === 1) {
           menuList.push(
             <Menu.Item
-              key={'menu-item-' + route.routes[0].path}
+              key={this.menuItemKeyPre + route.routes[0].path}
               onClick={() => this.handleMenuItemClick(route.routes[0])}
               icon={<UserOutlined />}
             >
@@ -46,7 +41,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
           menuList.push(
             <Menu.SubMenu
               icon={<UserOutlined />}
-              key={'sub-menu-' + route.path}
+              key={this.submenuItemKeyPre + route.path}
               title={route.meta.title || ''}
             >
               {this.getMenus(route.routes)}
@@ -56,7 +51,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
       } else if (!route.hasOwnProperty('hidden') && !route.hidden) {
         menuList.push(
           <Menu.Item
-            key={'menu-item-' + route.path}
+            key={this.menuItemKeyPre + route.path}
             onClick={() => this.handleMenuItemClick(route)}
             icon={<UserOutlined />}
           >
@@ -74,6 +69,9 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
       window.open(route.path);
     } catch (e) {
       history.push(route.path);
+      this.setState({
+        currentMenuSelect: this.menuItemKeyPre + history.location.pathname,
+      });
     }
   }
 
@@ -85,6 +83,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
       if (route.hidden) {
         continue;
       }
+
       if (!route.path) {
         continue;
       }
@@ -111,6 +110,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
         mode="inline"
         defaultSelectedKeys={['/']}
         className={styles.menu}
+        selectedKeys={[`${this.state.currentMenuSelect}`]}
       >
         {this.getMenus(this.state.displayRoutes)}
       </Menu>

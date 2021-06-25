@@ -69,25 +69,18 @@ const routes = [
       //     title: '表格',
       //   },
       // },
-      // {
-      //   path: '/about',
-      //   component: '@/pages/about',
-      //   meta: {
-      //     title: '关于我们',
-      //   },
-      // },
-      // {
-      //   path: '/list',
-      //   component: '@/pages/list',
-      //   meta: {
-      //     title: '列表测试',
-      //   },
-      // },
       {
         path: '/i18n',
         component: '@/pages/i18n',
         meta: {
           title: '国际化',
+        },
+      },
+      {
+        path: '/test',
+        component: '@/pages/test',
+        meta: {
+          title: '测试页',
         },
       },
       {
@@ -101,8 +94,9 @@ const routes = [
       {
         path: '/store',
         component: '@/pages/store',
+        hidden: true,
         meta: {
-          title: 'store',
+          title: 'Store',
         },
       },
       {
