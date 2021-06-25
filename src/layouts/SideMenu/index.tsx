@@ -13,14 +13,23 @@ interface SideMenuTypeParams {
 class SideMenu extends React.Component<any, SideMenuTypeParams> {
   readonly menuItemKeyPre: string = 'menu-item-key-';
   readonly submenuItemKeyPre: string = 'submenu-item-key-';
+  protected storeSubscribe: any;
 
   constructor(props: any) {
     super(props);
     this.generateRoutes = this.generateRoutes.bind(this);
     this.state = {
-      displayRoutes: this.generateRoutes(store.getState().app.sideMenu),
+      displayRoutes: [],
       currentMenuSelect: this.menuItemKeyPre + history.location.pathname,
     };
+  }
+
+  componentDidMount() {
+    this.storeSubscribe = store.subscribe(() => {
+      this.setState({
+        displayRoutes: this.generateRoutes(store.getState().app.sideMenu),
+      });
+    });
   }
 
   getMenus(routes: any) {
@@ -112,7 +121,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
         className={styles.menu}
         selectedKeys={[`${this.state.currentMenuSelect}`]}
       >
-        {this.getMenus(this.state.displayRoutes)}
+        {this.state.displayRoutes && this.getMenus(this.state.displayRoutes)}
       </Menu>
     );
   }

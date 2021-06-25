@@ -9,31 +9,41 @@ import { getToken } from '@/utils/auth';
 import { userInfo } from '@/api/user';
 import { getDynamicRoutes } from '@/api/routes';
 import { setUserInfo } from '@/store/user/index';
-
-let dynamicRoutes: any[] = [];
+import { formatDynamicRoutes } from '@/utils/formatDynamicRoutes';
 
 /**
- * 修改路由
- *
- * 直接修改routes，不需要返回
+ * tmp app routes
+ * this argument used in patchRoutes Function
  */
+let appRoutesState: any;
 
-export const patchRoutes = ({ routes }) => {
+/**
+ * modify route
+ * modify routes director，return void
+ *
+ * @params routes: current routes
+ * @params dynamicRoutes: the routes that design to add later
+ */
+export const patchRoutes = ({ routes, dynamicRoutes = [] }): void => {
+  const newDynamicRoutes = formatDynamicRoutes(dynamicRoutes);
   for (let route of routes) {
     if (route.path === '/') {
+      /**
+       * inset dynamicRoutes into last one position
+       * the last one position is default error component: 404
+       * from the react-route rules: you can`t place a component after error component else project unable to find it.
+       */
+      route.routes.splice(route.routes.length - 1, 0, ...newDynamicRoutes);
       store.dispatch(setSideMenu(route.routes));
     }
   }
+  appRoutesState = Object.assign([], routes);
 };
 
 /**
- * 覆写 render
+ * rewrite render
  */
 export function render(oldRender: Function) {
-  // getDynamicRoutes().then((res) => {
-  //   dynamicRoutes = res.data;
-  //   oldRender();
-  // });
   oldRender();
 }
 
@@ -45,7 +55,7 @@ interface onRouteChangeParams {
 }
 
 /**
- * 在初始加载和路由切换时做一些事情
+ * do something when first loading or when route change
  */
 export const onRouteChange = (params: onRouteChangeParams) => {
   const { routes, matchedRoutes, location, action } = params;
@@ -79,9 +89,21 @@ export const onRouteChange = (params: onRouteChangeParams) => {
     }
     const hasUserInfo = store.getState().user.id;
     if (hasUserInfo) {
+      // if user info
     } else {
+      // if not user info
+
+      // fitch user base info
       userInfo().then((res) => {
         store.dispatch(setUserInfo(res.data));
+      });
+
+      // access dynamic routes
+      getDynamicRoutes().then((res) => {
+        patchRoutes({
+          routes: appRoutesState,
+          dynamicRoutes: res.data || [],
+        });
       });
     }
   } else {
