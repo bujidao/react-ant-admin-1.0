@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Tag, Space } from 'antd';
+import { Table, Tag, Space, Button } from 'antd';
 import styles from './index.less';
 
 import { getArticleList } from '@/api/article';
@@ -35,6 +35,16 @@ class TheTable extends React.Component<TheTableType, TheTableType> {
       dataIndex: 'city',
       key: 'city',
     },
+    {
+      title: 'Operation',
+      key: 'operation',
+      render: (text: any, record: any) => (
+        <Space size="middle">
+          <Button type="primary">查看</Button>
+          <Button danger>删除</Button>
+        </Space>
+      ),
+    },
   ];
 
   constructor(props: any) {
@@ -56,14 +66,18 @@ class TheTable extends React.Component<TheTableType, TheTableType> {
 
   render() {
     return React.createElement(
-      Table,
-      {
-        dataSource: this.state.dataList,
-        columns: this.columns,
-        bordered: true,
-        rowKey: 'id',
-      },
+      'div',
       null,
+      React.createElement(
+        Table,
+        {
+          dataSource: this.state.dataList,
+          columns: this.columns,
+          bordered: true,
+          rowKey: 'id',
+        },
+        null,
+      ),
     );
   }
 }

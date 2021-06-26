@@ -31,7 +31,8 @@
     "js-cookie": "^2.2.1",
     "react-markdown": "^6.0.2",
     "redux": "^4.1.0",
-    "umi": "^3.4.23"
+    "umi": "^3.4.23",
+    "watermark-component-for-react": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",

@@ -72,7 +72,6 @@ service.interceptors.response.use(
     // token过期
     if (res.code === 20001) {
       removeToken();
-      console.log(getToken());
       history.replace('/login');
       return Promise.reject();
     }

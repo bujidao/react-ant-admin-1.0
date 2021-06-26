@@ -43,7 +43,7 @@ export default {
             username: '周杰伦',
             avatar:
               'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
-            roles: ['admin'],
+            roles: ['edit', 'create', 'delete'],
           }),
         );
         break;
@@ -54,7 +54,7 @@ export default {
             username: '张三',
             avatar:
               'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
-            roles: ['guest'],
+            roles: ['edit'],
           }),
         );
         break;

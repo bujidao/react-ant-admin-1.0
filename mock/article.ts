@@ -1,15 +1,6 @@
 import mockjs from 'mockjs';
 
-const sucessRes = (data: any, message: string = 'success') => {
-  const res = {
-    code: 200,
-    message: message,
-    data: {
-      ...data,
-    },
-  };
-  return res;
-};
+import { sucessRes } from './utils';
 
 export default {
   'GET /api/article/list': (req: Request, res: any) => {

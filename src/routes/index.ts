@@ -32,13 +32,13 @@ const routes = [
           icon: '',
         },
       },
-      // {
-      //   path: '/table',
-      //   component: '@/pages/table',
-      //   meta: {
-      //     title: '表格',
-      //   },
-      // },
+      {
+        path: '/table',
+        component: '@/pages/table',
+        meta: {
+          title: '表格',
+        },
+      },
       {
         path: '/user',
         meta: {
