@@ -13,3 +13,10 @@ jobs:
 
       - name: Build
         run: yarn build
+
+      - name: Public to Server
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACTION_DEPLOY_KEY_BLOG_PRI }}
+          BRANCH: gh-pages
+          FOLDER: dist
