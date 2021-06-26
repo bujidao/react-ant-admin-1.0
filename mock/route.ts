@@ -1,5 +1,6 @@
 import mockjs from 'mockjs';
 import { checkToken } from './utils';
+import { decrypt, encrypt } from '../src/utils/crypto';
 
 const sucessRes = (
   data: any,
@@ -11,7 +12,7 @@ const sucessRes = (
     message: message,
     data: data,
   };
-  return res;
+  return encrypt(res);
 };
 
 export default {

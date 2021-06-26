@@ -2,6 +2,7 @@ import { history } from 'umi';
 import store from '@/store';
 import axios from 'axios';
 import { removeToken, getToken } from '@/utils/auth';
+import { encrypt, decrypt } from '@/utils/crypto';
 
 // interface MyMap {
 //   [key: string]: any;
@@ -41,6 +42,9 @@ service.interceptors.request.use(
       // please modify it according to the actual situation
       config.headers['X-Token'] = store.getState().user.token;
     }
+
+    config.data = encrypt(config.data);
+
     // config.baseURL = getUrl(config.apiModel)
     return config;
   },
@@ -63,8 +67,8 @@ service.interceptors.response.use(
    * Here is just an example
    * You can also judge the status by HTTP Status Code.
    */
-  (response) => {
-    const res = response.data;
+  (response: any) => {
+    const res = decrypt(response.data);
     // token过期
     if (res.code === 20001) {
       removeToken();

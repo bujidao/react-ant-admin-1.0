@@ -1,11 +1,12 @@
 import mockjs from 'mockjs';
 import { checkToken, sucessRes } from './utils';
+import { decrypt } from '../src/utils/crypto';
 
 export default {
   'POST /api/user/login': (req: any, res: any) => {
     const date = new Date();
     const h = date.getHours();
-    const { username, password } = req.body;
+    const { username, password } = decrypt(req.body);
     if (username === 'admin') {
       res.send(
         sucessRes(
