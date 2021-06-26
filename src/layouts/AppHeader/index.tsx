@@ -3,7 +3,7 @@ import React from 'react';
 import TiggerSide from './components/TiggerSide/index';
 import store from '@/store';
 import Language from '@/components/Language/index';
-// import BreadCrumb from './components/BreadCrumb/index';
+import BreadCrumb from './components/BreadCrumb/index';
 import styles from './index.less';
 import UserAvatar from './components/UserAvatar';
 
@@ -29,7 +29,7 @@ class AppHeader extends React.Component<AppHeaderParams> {
             collapsed={this.props.collapsed}
             onClick={this.handleTiggerSideClick.bind(this)}
           />
-          {/* <BreadCrumb /> */}
+          <BreadCrumb />
         </div>
         <div>
           <Language className={styles.icon} />
