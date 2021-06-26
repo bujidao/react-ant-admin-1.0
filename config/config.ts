@@ -7,7 +7,8 @@ import theme from '../src/theme/index';
 const { REACT_APP_ENV } = process.env;
 
 export default defineConfig({
-  base: `/react-ant-admin-1.0`,
+  base: `/`,
+  publicPath: '/react-ant-admin-1.0',
   title: settings.title,
   // dynamicImport: {
   //   loading: '@/pages/loading/index',
