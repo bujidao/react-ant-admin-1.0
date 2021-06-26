@@ -12,6 +12,9 @@ export default defineConfig({
   // dynamicImport: {
   //   loading: '@/pages/loading/index',
   // },
+  history: {
+    type: 'hash',
+  },
   nodeModulesTransform: {
     type: 'none',
     exclude: [],
@@ -22,9 +25,9 @@ export default defineConfig({
   theme: theme,
   routes: routes,
   proxy: proxy[REACT_APP_ENV || 'dev'],
-  ssr: {
-    devServerRender: false,
-  },
+  // ssr: {
+  //   devServerRender: false,
+  // },
   devServer: {
     port: 9327,
     host: '0.0.0.0',
