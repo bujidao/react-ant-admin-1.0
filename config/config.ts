@@ -7,7 +7,7 @@ import theme from '../src/theme/index';
 const { REACT_APP_ENV } = process.env;
 
 export default defineConfig({
-  base: '/',
+  base: `/${settings.title}`,
   title: settings.title,
   // dynamicImport: {
   //   loading: '@/pages/loading/index',
