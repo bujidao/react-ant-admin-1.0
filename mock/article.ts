@@ -19,6 +19,8 @@ export default {
         },
       ],
     });
-    res.send(sucessRes(mockData));
+    setTimeout(() => {
+      res.send(sucessRes(mockData));
+    }, 3000);
   },
 };

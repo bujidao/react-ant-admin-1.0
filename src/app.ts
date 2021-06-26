@@ -11,6 +11,11 @@ import { getDynamicRoutes } from '@/api/routes';
 import { setUserInfo } from '@/store/user/index';
 import { formatDynamicRoutes } from '@/utils/formatDynamicRoutes';
 
+import NProgress from 'nprogress'; // progress bar
+import 'nprogress/nprogress.css'; // progress bar style
+
+NProgress.configure({ showSpinner: false }); // NProgress Configuration
+
 /**
  * tmp app routes
  * this argument used in patchRoutes Function
@@ -57,7 +62,8 @@ interface onRouteChangeParams {
 /**
  * do something when first loading or when route change
  */
-export const onRouteChange = (params: onRouteChangeParams) => {
+export const onRouteChange = async (params: onRouteChangeParams) => {
+  NProgress.start();
   const { routes, matchedRoutes, location, action } = params;
 
   // set page title
@@ -72,7 +78,7 @@ export const onRouteChange = (params: onRouteChangeParams) => {
   }
 
   // set current page routes
-  store.dispatch(setPageRoutes(matchedRoutes));
+  await store.dispatch(setPageRoutes(matchedRoutes));
 
   /**
    * 路由校验
@@ -87,30 +93,36 @@ export const onRouteChange = (params: onRouteChangeParams) => {
     if (currentRoute.path === '/login') {
       history.replace('/');
     }
-    const hasUserInfo = store.getState().user.id;
+    const hasUserInfo = await store.getState().user.id;
     if (hasUserInfo) {
       // if user info
     } else {
       // if not user info
 
       // fitch user base info
-      userInfo().then((res) => {
+      await userInfo().then((res) => {
         store.dispatch(setUserInfo(res.data));
+        NProgress.set(0.3);
       });
 
       // access dynamic routes
-      getDynamicRoutes().then((res) => {
+      await getDynamicRoutes().then((res) => {
         patchRoutes({
           routes: appRoutesState,
           dynamicRoutes: res.data || [],
         });
+        NProgress.set(0.8);
       });
+      NProgress.done();
     }
   } else {
     if (whiteList.indexOf(currentRoute.path) !== -1) {
       // don`t need to login
+      NProgress.done();
     } else {
       history.replace('/login');
+      NProgress.done();
     }
   }
+  NProgress.done();
 };
