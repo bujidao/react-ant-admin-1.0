@@ -1,4 +1,5 @@
 const Layout = '@/layouts/index';
+import settings from '../../config/defaultSettings';
 
 /**
  *
@@ -26,7 +27,7 @@ const routes = [
     routes: [
       {
         path: '/',
-        component: '@/pages/home',
+        component: '@/pages/dashboard',
         meta: {
           title: '首页',
           icon: '',
@@ -103,7 +104,7 @@ const routes = [
         path: '/external-link',
         routes: [
           {
-            path: 'https://github.com/bujidao/react-ant-admin-1.0',
+            path: settings.github,
             meta: { title: 'External Link', icon: 'link' },
           },
         ],
