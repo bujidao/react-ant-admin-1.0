@@ -12,7 +12,7 @@ interface initAppStateParams {
   language: string;
   sideMenuState: sideMenuStateType;
   pageRoutes: Route | undefined;
-  sideMenu: string[];
+  sideMenu: any[];
 }
 
 /**

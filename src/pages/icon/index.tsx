@@ -7,7 +7,25 @@ import { Tabs, Row, Col, Card } from 'antd';
 
 class SvgIconList extends React.Component {
   render() {
-    const iconList: any = ['book', 'language', 'svg', 'react', 'earth', 'antd'];
+    const iconList: any = [
+      'admin',
+      'book',
+      'bug',
+      'dashboard',
+      'earth',
+      'example',
+      'icon',
+      'language',
+      'link',
+      'list',
+      'lock',
+      'manage',
+      'react',
+      'table',
+      'user-info',
+      'user',
+      '404',
+    ];
     return (
       <Row gutter={[16, 16]}>
         {iconList.map((item: any) => (
@@ -18,7 +36,7 @@ class SvgIconList extends React.Component {
               title={item}
               style={{ textAlign: 'center' }}
             >
-              <div style={{ fontSize: 42 }}>
+              <div style={{ fontSize: 42, color: '#999' }}>
                 <SvgIcon icon={item}></SvgIcon>
               </div>
             </Card>

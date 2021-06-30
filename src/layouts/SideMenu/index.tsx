@@ -4,6 +4,7 @@ import { history } from 'umi';
 import { UserOutlined } from '@ant-design/icons';
 import styles from './index.less';
 import store from '@/store';
+import SvgIcon from '@/icons/index';
 
 interface SideMenuTypeParams {
   displayRoutes: Array<any>;
@@ -41,7 +42,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
             <Menu.Item
               key={this.menuItemKeyPre + route.routes[0].path}
               onClick={() => this.handleMenuItemClick(route.routes[0])}
-              icon={<UserOutlined />}
+              icon={<SvgIcon icon={route.routes[0].meta.icon} />}
             >
               {route.routes[0].meta.title}
             </Menu.Item>,
@@ -49,7 +50,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
         } else {
           menuList.push(
             <Menu.SubMenu
-              icon={<UserOutlined />}
+              icon={<SvgIcon icon={route.meta.icon} />}
               key={this.submenuItemKeyPre + route.path}
               title={route.meta.title || ''}
             >
@@ -62,7 +63,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
           <Menu.Item
             key={this.menuItemKeyPre + route.path}
             onClick={() => this.handleMenuItemClick(route)}
-            icon={<UserOutlined />}
+            icon={<SvgIcon icon={route.meta.icon} />}
           >
             {route.meta.title}
           </Menu.Item>,

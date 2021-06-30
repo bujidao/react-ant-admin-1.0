@@ -10,9 +10,15 @@ type SvgIconParams = {
 
 class SvgIcon extends React.Component<SvgIconParams> {
   render() {
+    let iconPath: string;
+    try {
+      iconPath = require(`./svg/${this.props.icon}.svg`);
+    } catch (e) {
+      iconPath = require(`./svg/example.svg`);
+    }
     return (
       <ReactSVG
-        src={require(`./svg/${this.props.icon}.svg`)}
+        src={iconPath}
         className={classnames(styles.svgIcon, this.props.className)}
         wrapper="div"
       />

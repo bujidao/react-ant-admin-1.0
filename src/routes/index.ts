@@ -19,6 +19,7 @@ const routes = [
     component: '@/pages/login',
     meta: {
       title: '登录',
+      icon: 'table',
     },
   },
   {
@@ -30,14 +31,15 @@ const routes = [
         component: '@/pages/dashboard',
         meta: {
           title: '首页',
-          icon: '',
+          icon: 'dashboard',
         },
       },
       {
         path: '/icon',
         component: '@/pages/icon',
         meta: {
-          title: 'icon图标',
+          title: 'ICON图标',
+          icon: 'icon',
         },
       },
       {
@@ -45,12 +47,14 @@ const routes = [
         component: '@/pages/table',
         meta: {
           title: '表格',
+          icon: 'table',
         },
       },
       {
         path: '/user',
         meta: {
           title: '用户中心',
+          icon: 'user',
         },
         routes: [
           {
@@ -58,6 +62,7 @@ const routes = [
             component: '@/pages/user/list',
             meta: {
               title: '用户列表',
+              icon: 'list',
             },
           },
           {
@@ -65,6 +70,7 @@ const routes = [
             component: '@/pages/user/manage',
             meta: {
               title: '用户管理',
+              icon: 'manage',
             },
           },
         ],
@@ -75,6 +81,7 @@ const routes = [
         hidden: true,
         meta: {
           title: '加载页面',
+          icon: 'table',
         },
       },
       {
@@ -82,6 +89,7 @@ const routes = [
         component: '@/pages/i18n',
         meta: {
           title: '国际化',
+          icon: 'language',
         },
       },
       {
@@ -89,6 +97,7 @@ const routes = [
         component: '@/pages/test',
         meta: {
           title: '测试页',
+          icon: 'bug',
         },
       },
       {
@@ -97,6 +106,7 @@ const routes = [
         hidden: true,
         meta: {
           title: '404',
+          icon: 'table',
         },
       },
       {
@@ -105,6 +115,7 @@ const routes = [
         hidden: true,
         meta: {
           title: 'Store',
+          icon: 'table',
         },
       },
       {
