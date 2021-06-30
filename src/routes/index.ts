@@ -34,6 +34,13 @@ const routes = [
         },
       },
       {
+        path: '/icon',
+        component: '@/pages/icon',
+        meta: {
+          title: 'icon图标',
+        },
+      },
+      {
         path: '/table',
         component: '@/pages/table',
         meta: {
