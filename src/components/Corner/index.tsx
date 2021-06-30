@@ -22,6 +22,7 @@ class Corner extends React.Component<CornerInt> {
         style: {
           borderWidth: this.props.size || '50px',
         },
+        target: '_blank',
       },
       this.props.label,
     );
