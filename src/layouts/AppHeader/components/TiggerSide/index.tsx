@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './index.less';
 
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 
@@ -16,13 +17,13 @@ class TiggerSide extends React.Component<TiggerSideParams> {
   }
 
   render() {
-    return React.createElement(
-      this.props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-      {
-        className: 'trigger',
-        onClick: this.handleClick.bind(this),
+    return React.createElement(MenuFoldOutlined, {
+      className: styles.trigger,
+      onClick: this.handleClick.bind(this),
+      style: {
+        transform: `scaleX(${this.props.collapsed ? -1 : 1})`,
       },
-    );
+    });
   }
 }
 
