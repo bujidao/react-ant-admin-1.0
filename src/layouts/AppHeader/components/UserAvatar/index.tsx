@@ -23,11 +23,6 @@ class MenuList extends React.PureComponent<MenuListParams> {
     const { intl } = this.props;
     return (
       <Menu selectable selectedKeys={[store.getState().app.language]}>
-        <Menu.Item onClick={() => this.handleLoginOut()} key="logout">
-          {intl.formatMessage({
-            id: 'login.logout',
-          })}
-        </Menu.Item>
         <Menu.Item key="github">
           <a
             href="https://github.com/bujidao/react-ant-admin-1.0"
@@ -35,6 +30,12 @@ class MenuList extends React.PureComponent<MenuListParams> {
           >
             Github
           </a>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item onClick={() => this.handleLoginOut()} key="logout">
+          {intl.formatMessage({
+            id: 'login.logout',
+          })}
         </Menu.Item>
       </Menu>
     );
