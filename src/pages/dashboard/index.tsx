@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="dashboard">
-        <Corner href={settings.github} className={styles.corner} />
+        <Corner href={settings.github} className={styles.corner} size="40px" />
         <h1 className={styles.title}>dashboard</h1>
         <ul>
           <li>adf</li>
