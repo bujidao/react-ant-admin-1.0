@@ -4,6 +4,14 @@ import styles from './index.less';
 import ReactMarkdown from 'react-markdown';
 import md from './README.md';
 import { Tabs, Row, Col, Card } from 'antd';
+import {
+  StepBackwardOutlined,
+  StepForwardOutlined,
+  FastBackwardOutlined,
+  FastForwardOutlined,
+  ShrinkOutlined,
+  ArrowsAltOutlined,
+} from '@ant-design/icons';
 
 class SvgIconList extends React.Component {
   render() {
@@ -38,6 +46,55 @@ class SvgIconList extends React.Component {
             >
               <div style={{ fontSize: 42, color: '#999' }}>
                 <SvgIcon icon={item}></SvgIcon>
+              </div>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    );
+  }
+}
+
+class AntdIconList extends React.Component {
+  render() {
+    const iconList: any = [
+      {
+        name: 'StepBackwardOutlined',
+        component: StepBackwardOutlined,
+      },
+      {
+        name: 'StepForwardOutlined',
+        component: StepForwardOutlined,
+      },
+      {
+        name: 'FastBackwardOutlined',
+        component: FastBackwardOutlined,
+      },
+      {
+        name: 'FastForwardOutlined',
+        component: FastForwardOutlined,
+      },
+      {
+        name: 'ShrinkOutlined',
+        component: ShrinkOutlined,
+      },
+      {
+        name: 'ArrowsAltOutlined',
+        component: ArrowsAltOutlined,
+      },
+    ];
+    return (
+      <Row gutter={[16, 16]}>
+        {iconList.map((item: any) => (
+          <Col span={4}>
+            <Card
+              hoverable
+              size="small"
+              title={item.name}
+              style={{ textAlign: 'center' }}
+            >
+              <div style={{ fontSize: 42, color: '#999' }}>
+                <item.component />
               </div>
             </Card>
           </Col>
@@ -82,9 +139,7 @@ class IconPage extends React.Component {
             }
             key="3"
           >
-            <div className="markdown-article">
-              <ReactMarkdown>{md}</ReactMarkdown>
-            </div>
+            <AntdIconList />
           </Tabs.TabPane>
         </Tabs>
       </div>

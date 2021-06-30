@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './index.less';
 
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { MenuFoldOutlined } from '@ant-design/icons';
 
 import './index.less';
 
