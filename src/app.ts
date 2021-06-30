@@ -49,6 +49,10 @@ export const patchRoutes = ({ routes, dynamicRoutes = [] }): void => {
  * rewrite render
  */
 export function render(oldRender: Function) {
+  const hasToken = getToken();
+  if (!hasToken) {
+    history.push('/login');
+  }
   oldRender();
 }
 
