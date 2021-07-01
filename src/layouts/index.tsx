@@ -10,6 +10,7 @@ import AppHeader from './AppHeader/index';
 import AppMain from './AppMain/index';
 import store from '../store/index';
 import { toggleSideMenuState } from '../store/app/index';
+import Settings from './Settings/index';
 
 interface AppParams {
   isSideMenuCollapsed: boolean;
@@ -56,7 +57,9 @@ class App extends React.Component<AppParams, AppParams> {
           collapsed={this.state.isSideMenuCollapsed} // 是否收起
           collapsedWidth="54"
         >
-          <Logo collapsed={this.state.isSideMenuCollapsed} />
+          {store.getState().app.showLogo && (
+            <Logo collapsed={this.state.isSideMenuCollapsed} />
+          )}
           <SideMenu />
         </Sider>
         {/* side menu end */}
@@ -74,6 +77,7 @@ class App extends React.Component<AppParams, AppParams> {
           {/* main body */}
           <Content>
             <AppMain children={this.props.children} />
+            <Settings />
           </Content>
           {/* main body end */}
         </Layout>

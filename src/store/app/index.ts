@@ -13,6 +13,8 @@ interface initAppStateParams {
   sideMenuState: sideMenuStateType;
   pageRoutes: Route | undefined;
   sideMenu: any[];
+  settingVisible: boolean;
+  showLogo: boolean;
 }
 
 /**
@@ -26,6 +28,8 @@ const initAppState: initAppStateParams = {
   sideMenuState: Cookies.get('side-menu'),
   pageRoutes: undefined,
   sideMenu: [],
+  settingVisible: false,
+  showLogo: true,
 };
 
 const appReducer = (state = initAppState, action: ReduxActionType) => {
@@ -53,6 +57,16 @@ const appReducer = (state = initAppState, action: ReduxActionType) => {
       return {
         ...state,
         sideMenu: action.payload,
+      };
+    case 'SET_SETTING_VISIBLE':
+      return {
+        ...state,
+        settingVisible: action.payload,
+      };
+    case 'TOGGLE_LOGO':
+      return {
+        ...state,
+        showLogo: action.payload,
       };
     default:
       return state;
@@ -109,6 +123,32 @@ export const setPageRoutes = (value: any): ReduxActionType => {
 export const setSideMenu = (value: any): ReduxActionType => {
   return {
     type: 'SET_SIDE_MENU',
+    payload: value,
+  };
+};
+
+/**
+ * action
+ * set setting visible
+ * @param value
+ * @returns
+ */
+export const setSettingVisible = (value: any): ReduxActionType => {
+  return {
+    type: 'SET_SETTING_VISIBLE',
+    payload: value,
+  };
+};
+
+/**
+ * action
+ * set side menu logo
+ * @param value
+ * @returns
+ */
+export const toggleSideMenuLogo = (value: any): ReduxActionType => {
+  return {
+    type: 'TOGGLE_LOGO',
     payload: value,
   };
 };
