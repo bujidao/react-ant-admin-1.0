@@ -43,6 +43,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
               key={this.menuItemKeyPre + route.routes[0].path}
               onClick={() => this.handleMenuItemClick(route.routes[0])}
               icon={isRootMenu && <SvgIcon icon={route.routes[0].meta.icon} />}
+              className={styles.menuItem}
             >
               {route.routes[0].meta.title}
             </Menu.Item>,
@@ -53,6 +54,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
               icon={isRootMenu && <SvgIcon icon={route.meta.icon} />}
               key={this.submenuItemKeyPre + route.path}
               title={route.meta.title || ''}
+              popupClassName={styles.menuSubItem}
             >
               {this.getMenus(route.routes)}
             </Menu.SubMenu>,
@@ -64,6 +66,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
             key={this.menuItemKeyPre + route.path}
             onClick={() => this.handleMenuItemClick(route)}
             icon={isRootMenu && <SvgIcon icon={route.meta.icon} />}
+            className={styles.menuItem}
           >
             {route.meta.title}
           </Menu.Item>,
