@@ -2,7 +2,7 @@
 
 本方案支持`svg`、`antd图标`、`iconfont字体`
 
-## 优缺点
+## 异同点
 
 `字体`和`svg`的异同点如下：
 
@@ -47,5 +47,12 @@ import {
 
 ## `icon-font`图标使用方式
 
+``` tsx
+// 导入
+// 新字体，直接进入src/styles/font/iconfont,对里面的文件进行替换
+// 字体样式初始化src/styles/default.less
 
+// 使用
+<span className="iconfont">&#xe6d3;<span/>
+```
 

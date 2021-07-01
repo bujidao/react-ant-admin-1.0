@@ -15,6 +15,9 @@ import {
 } from '@ant-design/icons';
 import { clipboard } from '@/components/Clipboard/index.ts';
 
+/**
+ * svg
+ */
 class SvgIconList extends React.Component {
   copyCode(element: any) {
     const copyText = `
@@ -69,6 +72,9 @@ import SvgIcon from '@/icons/index';
   }
 }
 
+/**
+ * antd
+ */
 class AntdIconList extends React.Component {
   copyCode(element: any) {
     const copyText = `
@@ -128,6 +134,66 @@ import {${element.name}} from '@ant-design/icons';
   }
 }
 
+/**
+ * icon font
+ */
+class IconFontList extends React.Component {
+  copyCode(element: any) {
+    const copyText = `<span className="iconfont">${element}<span/>`;
+    clipboard(copyText);
+  }
+  HTMLDecode(text: any) {
+    var temp: any = document.createElement('div');
+    temp.innerHTML = text;
+    var output = temp.innerText || temp.textContent;
+    temp = null;
+    return output;
+  }
+  render() {
+    const iconList: any = [
+      '&#xe651;',
+      '&#xe6d3;',
+      '&#xe643;',
+      '&#xe648;',
+      '&#xe6d5;',
+      '&#xe61d;',
+      '&#xe620;',
+      '&#xe7ea;',
+      '&#xe642;',
+      '&#xe608;',
+      '&#xe603;',
+      '&#xe646;',
+      '&#xe600;',
+    ];
+    return (
+      <Row gutter={[16, 16]}>
+        {iconList.map((item: any) => (
+          <Col span={4} key={item.name}>
+            <Card
+              hoverable
+              size="small"
+              title={item}
+              style={{ textAlign: 'center' }}
+            >
+              <div
+                style={{ fontSize: 42, color: '#999' }}
+                onClick={() => this.copyCode(item)}
+              >
+                <span
+                  className="iconfont"
+                  style={{ fontSize: 42, color: '#999' }}
+                >
+                  {this.HTMLDecode(item)}
+                </span>
+              </div>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    );
+  }
+}
+
 class IconPage extends React.Component {
   render() {
     return (
@@ -164,6 +230,16 @@ class IconPage extends React.Component {
             key="3"
           >
             <AntdIconList />
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab={
+              <span>
+                <SvgIcon icon="antd" /> Iconfont图标
+              </span>
+            }
+            key="4"
+          >
+            <IconFontList />
           </Tabs.TabPane>
         </Tabs>
       </div>
