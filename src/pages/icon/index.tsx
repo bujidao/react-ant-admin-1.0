@@ -4,6 +4,7 @@ import styles from './index.less';
 import ReactMarkdown from 'react-markdown';
 import md from './README.md';
 import { Tabs, Row, Col, Card } from 'antd';
+import classNames from 'classnames';
 import {
   StepBackwardOutlined,
   StepForwardOutlined,
@@ -12,8 +13,16 @@ import {
   ShrinkOutlined,
   ArrowsAltOutlined,
 } from '@ant-design/icons';
+import { clipboard } from '@/components/Clipboard/index.ts';
 
 class SvgIconList extends React.Component {
+  copyCode(element: any) {
+    const copyText = `
+import SvgIcon from '@/icons/index';
+<SvgIcon icon="${element}"></SvgIcon>
+    `;
+    clipboard(copyText);
+  }
   render() {
     const iconList: any = [
       'admin',
@@ -35,27 +44,39 @@ class SvgIconList extends React.Component {
       '404',
     ];
     return (
-      <Row gutter={[16, 16]}>
-        {iconList.map((item: any) => (
-          <Col span={4}>
-            <Card
-              hoverable
-              size="small"
-              title={item}
-              style={{ textAlign: 'center' }}
-            >
-              <div style={{ fontSize: 42, color: '#999' }}>
-                <SvgIcon icon={item}></SvgIcon>
-              </div>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+      <>
+        <Row gutter={[16, 16]}>
+          {iconList.map((item: any) => (
+            <Col span={4} key={item.toString()}>
+              <Card
+                hoverable
+                size="small"
+                title={item}
+                style={{ textAlign: 'center' }}
+              >
+                <div
+                  style={{ fontSize: 42, color: '#999' }}
+                  onClick={() => this.copyCode(item)}
+                >
+                  <SvgIcon icon={item}></SvgIcon>
+                </div>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </>
     );
   }
 }
 
 class AntdIconList extends React.Component {
+  copyCode(element: any) {
+    const copyText = `
+import {${element.name}} from '@ant-design/icons';
+<${element.name}" />
+    `;
+    clipboard(copyText);
+  }
   render() {
     const iconList: any = [
       {
@@ -86,14 +107,17 @@ class AntdIconList extends React.Component {
     return (
       <Row gutter={[16, 16]}>
         {iconList.map((item: any) => (
-          <Col span={4}>
+          <Col span={4} key={item.name}>
             <Card
               hoverable
               size="small"
               title={item.name}
               style={{ textAlign: 'center' }}
             >
-              <div style={{ fontSize: 42, color: '#999' }}>
+              <div
+                style={{ fontSize: 42, color: '#999' }}
+                onClick={() => this.copyCode(item)}
+              >
                 <item.component />
               </div>
             </Card>
@@ -108,7 +132,7 @@ class IconPage extends React.Component {
   render() {
     return (
       <div className={styles.iconPage}>
-        <Tabs type="card" className={styles.cardContainer}>
+        <Tabs type="card" className={classNames(styles.cardContainer)}>
           <Tabs.TabPane
             tab={
               <span>
