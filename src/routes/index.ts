@@ -51,6 +51,65 @@ const routes = [
         },
       },
       {
+        path: '/nested',
+        meta: {
+          title: '路由嵌套',
+          icon: 'nested',
+        },
+        routes: [
+          {
+            path: '/nested/menu1',
+            meta: {
+              title: '菜单1',
+              icon: 'list',
+            },
+            routes: [
+              {
+                path: '/nested/menu1/menu1-1',
+                meta: {
+                  title: '菜单1-1',
+                  icon: 'list',
+                },
+                routes: [
+                  {
+                    path: '/nested/menu1/menu1-1/menu1-1-1',
+                    component: '@/pages/nested/menu1-1-1',
+                    meta: {
+                      title: '菜单1-1-1',
+                      icon: 'list',
+                    },
+                  },
+                  {
+                    path: '/nested/menu1/menu1-1/menu1-1-2',
+                    component: '@/pages/nested/menu1-1-2',
+                    meta: {
+                      title: '菜单1-1-2',
+                      icon: 'manage',
+                    },
+                  },
+                ],
+              },
+              {
+                path: '/nested/menu1/menu1-2',
+                component: '@/pages/nested/menu1-2',
+                meta: {
+                  title: '菜单1-2',
+                  icon: 'manage',
+                },
+              },
+            ],
+          },
+          {
+            path: '/nested/menu2',
+            component: '@/pages/nested/menu2',
+            meta: {
+              title: '菜单2',
+              icon: 'manage',
+            },
+          },
+        ],
+      },
+      {
         path: '/user',
         meta: {
           title: '用户中心',
