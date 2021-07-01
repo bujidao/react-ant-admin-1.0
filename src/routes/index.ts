@@ -162,10 +162,9 @@ const routes = [
       {
         path: '/404',
         component: './404',
-        hidden: true,
         meta: {
           title: '404',
-          icon: 'table',
+          icon: '404',
         },
       },
       {
