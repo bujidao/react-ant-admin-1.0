@@ -25,7 +25,9 @@ class BreadCrumb extends React.Component<BreadCrumbParams> {
       });
     } else {
       if (route.meta && route.meta.title) {
-        label = route.meta.title;
+        label = this.props.intl.formatMessage({
+          id: 'app.' + route.meta.title,
+        });
       } else {
         label = route.path.replace('/', '');
       }
