@@ -30,7 +30,7 @@ const routes = [
         path: '/',
         component: '@/pages/dashboard',
         meta: {
-          title: '首页',
+          title: 'dashboard',
           icon: 'dashboard',
         },
       },
@@ -38,7 +38,7 @@ const routes = [
         path: '/icon',
         component: '@/pages/icon',
         meta: {
-          title: 'ICON图标',
+          title: 'icon',
           icon: 'icon',
         },
       },
@@ -46,28 +46,28 @@ const routes = [
         path: '/table',
         component: '@/pages/table',
         meta: {
-          title: '表格',
+          title: 'table',
           icon: 'table',
         },
       },
       {
         path: '/nested',
         meta: {
-          title: '路由嵌套',
+          title: 'nestedRoutes',
           icon: 'nested',
         },
         routes: [
           {
             path: '/nested/menu1',
             meta: {
-              title: '菜单1',
+              title: 'menu1',
               icon: 'list',
             },
             routes: [
               {
                 path: '/nested/menu1/menu1-1',
                 meta: {
-                  title: '菜单1-1',
+                  title: 'menu1-1',
                   icon: 'list',
                 },
                 routes: [
@@ -75,7 +75,7 @@ const routes = [
                     path: '/nested/menu1/menu1-1/menu1-1-1',
                     component: '@/pages/nested/menu1-1-1',
                     meta: {
-                      title: '菜单1-1-1',
+                      title: 'menu1-1-1',
                       icon: 'list',
                     },
                   },
@@ -83,7 +83,7 @@ const routes = [
                     path: '/nested/menu1/menu1-1/menu1-1-2',
                     component: '@/pages/nested/menu1-1-2',
                     meta: {
-                      title: '菜单1-1-2',
+                      title: 'menu1-1-2',
                       icon: 'manage',
                     },
                   },
@@ -93,7 +93,7 @@ const routes = [
                 path: '/nested/menu1/menu1-2',
                 component: '@/pages/nested/menu1-2',
                 meta: {
-                  title: '菜单1-2',
+                  title: 'menu1-2',
                   icon: 'manage',
                 },
               },
@@ -103,7 +103,7 @@ const routes = [
             path: '/nested/menu2',
             component: '@/pages/nested/menu2',
             meta: {
-              title: '菜单2',
+              title: 'menu2',
               icon: 'manage',
             },
           },
@@ -112,7 +112,7 @@ const routes = [
       {
         path: '/user',
         meta: {
-          title: '用户中心',
+          title: 'userCenter',
           icon: 'user',
         },
         routes: [
@@ -120,7 +120,7 @@ const routes = [
             path: '/user/list',
             component: '@/pages/user/list',
             meta: {
-              title: '用户列表',
+              title: 'userList',
               icon: 'list',
             },
           },
@@ -128,7 +128,7 @@ const routes = [
             path: '/user/manage',
             component: '@/pages/user/manage',
             meta: {
-              title: '用户管理',
+              title: 'userManage',
               icon: 'manage',
             },
           },
@@ -139,7 +139,7 @@ const routes = [
         component: '@/pages/loading',
         hidden: true,
         meta: {
-          title: '加载页面',
+          title: 'loading',
           icon: 'table',
         },
       },
@@ -147,7 +147,7 @@ const routes = [
         path: '/i18n',
         component: '@/pages/i18n',
         meta: {
-          title: '国际化',
+          title: 'international',
           icon: 'language',
         },
       },
@@ -155,7 +155,7 @@ const routes = [
         path: '/test',
         component: '@/pages/test',
         meta: {
-          title: '测试页',
+          title: 'bug',
           icon: 'bug',
         },
       },
@@ -182,7 +182,7 @@ const routes = [
         routes: [
           {
             path: settings.github,
-            meta: { title: 'External Link', icon: 'link' },
+            meta: { title: 'externalLink', icon: 'link' },
           },
         ],
       },

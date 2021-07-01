@@ -1,24 +1,27 @@
 import React from 'react';
 import { Menu } from 'antd';
 import { history } from 'umi';
-import { UserOutlined } from '@ant-design/icons';
 import styles from './index.less';
 import store from '@/store';
 import SvgIcon from '@/icons/index';
+import { injectIntl } from 'umi';
 
 interface SideMenuTypeParams {
   displayRoutes: Array<any>;
   currentMenuSelect: string;
+  intl?: any;
 }
 
 class SideMenu extends React.Component<any, SideMenuTypeParams> {
   readonly menuItemKeyPre: string = 'menu-item-key-';
   readonly submenuItemKeyPre: string = 'submenu-item-key-';
   protected storeSubscribe: any;
+  protected intl: any;
 
   constructor(props: any) {
     super(props);
     this.generateRoutes = this.generateRoutes.bind(this);
+    this.intl = props.intl;
     this.state = {
       displayRoutes: [],
       currentMenuSelect: this.menuItemKeyPre + history.location.pathname,
@@ -45,7 +48,9 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
               icon={isRootMenu && <SvgIcon icon={route.routes[0].meta.icon} />}
               className={styles.menuItem}
             >
-              {route.routes[0].meta.title}
+              {this.intl.formatMessage({
+                id: 'app.' + route.routes[0].meta.title,
+              })}
             </Menu.Item>,
           );
         } else {
@@ -53,7 +58,9 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
             <Menu.SubMenu
               icon={isRootMenu && <SvgIcon icon={route.meta.icon} />}
               key={this.submenuItemKeyPre + route.path}
-              title={route.meta.title || ''}
+              title={
+                this.intl.formatMessage({ id: 'app.' + route.meta.title }) || ''
+              }
               popupClassName={styles.menuSubItem}
             >
               {this.getMenus(route.routes)}
@@ -68,7 +75,9 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
             icon={isRootMenu && <SvgIcon icon={route.meta.icon} />}
             className={styles.menuItem}
           >
-            {route.meta.title}
+            {this.intl.formatMessage({
+              id: 'app.' + route.meta.title,
+            })}
           </Menu.Item>,
         );
       }
@@ -132,4 +141,4 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
   }
 }
 
-export default SideMenu;
+export default injectIntl(SideMenu);

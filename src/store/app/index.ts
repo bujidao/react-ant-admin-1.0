@@ -33,7 +33,7 @@ const appReducer = (state = initAppState, action: ReduxActionType) => {
     case 'TOGGLE_LANGUAGE':
       const newLanguage = action.payload;
       Cookies.set('language', newLanguage);
-      setLocale(newLanguage, false);
+      setLocale(newLanguage, true);
       return {
         ...state,
         language: newLanguage,

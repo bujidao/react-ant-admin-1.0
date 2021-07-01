@@ -23,7 +23,7 @@ export default {
         {
           path: '/permission',
           meta: {
-            title: '账户权限',
+            title: 'permission',
             icon: 'lock',
           },
           routes: [
@@ -31,7 +31,7 @@ export default {
               path: '/permission/index',
               component: '/permission/index',
               meta: {
-                title: '默认权限页',
+                title: 'permissionDefault',
                 icon: 'user-info',
               },
             },
@@ -39,7 +39,7 @@ export default {
               path: '/permission/admin',
               component: '/permission/admin',
               meta: {
-                title: 'admin权限',
+                title: 'permissionAdmin',
                 icon: 'admin',
               },
             },
@@ -47,7 +47,7 @@ export default {
               path: '/permission/guest',
               component: '/permission/guest',
               meta: {
-                title: 'guest权限',
+                title: 'permissionGuest',
                 icon: 'admin',
               },
             },
