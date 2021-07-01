@@ -33,7 +33,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
     });
   }
 
-  getMenus(routes: any) {
+  getMenus(routes: any, isRootMenu: boolean = false) {
     let menuList: Array<any> = [];
     for (let route of routes) {
       if (route.hasOwnProperty('routes') && route.routes.length) {
@@ -42,7 +42,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
             <Menu.Item
               key={this.menuItemKeyPre + route.routes[0].path}
               onClick={() => this.handleMenuItemClick(route.routes[0])}
-              icon={<SvgIcon icon={route.routes[0].meta.icon} />}
+              icon={isRootMenu && <SvgIcon icon={route.routes[0].meta.icon} />}
             >
               {route.routes[0].meta.title}
             </Menu.Item>,
@@ -50,7 +50,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
         } else {
           menuList.push(
             <Menu.SubMenu
-              icon={<SvgIcon icon={route.meta.icon} />}
+              icon={isRootMenu && <SvgIcon icon={route.meta.icon} />}
               key={this.submenuItemKeyPre + route.path}
               title={route.meta.title || ''}
             >
@@ -63,7 +63,7 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
           <Menu.Item
             key={this.menuItemKeyPre + route.path}
             onClick={() => this.handleMenuItemClick(route)}
-            icon={<SvgIcon icon={route.meta.icon} />}
+            icon={isRootMenu && <SvgIcon icon={route.meta.icon} />}
           >
             {route.meta.title}
           </Menu.Item>,
@@ -122,7 +122,8 @@ class SideMenu extends React.Component<any, SideMenuTypeParams> {
         className={styles.menu}
         selectedKeys={[`${this.state.currentMenuSelect}`]}
       >
-        {this.state.displayRoutes && this.getMenus(this.state.displayRoutes)}
+        {this.state.displayRoutes &&
+          this.getMenus(this.state.displayRoutes, true)}
       </Menu>
     );
   }
