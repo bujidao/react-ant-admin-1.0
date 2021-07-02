@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './index.less';
-import { Card, Radio, Row, Col, Button } from 'antd';
+import { Card, Radio, Row, Col, Button, Input } from 'antd';
 import { ReactComponent as Earth } from '../../icons/svg/earth.svg';
 import store from '../../store/index';
 import { toggleLanguage } from '@/store/app/index';
@@ -88,6 +88,14 @@ class I18n extends React.Component<I18nType> {
               <Radio.Button value="zh-CN">中文</Radio.Button>
               <Radio.Button value="en-US">English</Radio.Button>
             </Radio.Group>
+            <Input
+              style={{
+                marginTop: '20px',
+              }}
+              disabled
+              size="small"
+              placeholder="本项目国际化根据umi自带locale插件"
+            />
           </Card>
         </div>
         <div style={{ marginTop: '20px' }}>
@@ -114,6 +122,7 @@ class I18n extends React.Component<I18nType> {
                 })}
               </Button>
             </Col>
+            <Col span={24}></Col>
           </Row>
         </div>
       </div>
