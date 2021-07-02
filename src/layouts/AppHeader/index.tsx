@@ -6,6 +6,7 @@ import Language from '@/components/Language/index';
 import BreadCrumb from './components/BreadCrumb/index';
 import styles from './index.less';
 import UserAvatar from './components/UserAvatar';
+import Screenfull from './components/Screenfull';
 
 interface AppHeaderParams {
   collapsed: boolean;
@@ -32,6 +33,7 @@ class AppHeader extends React.Component<AppHeaderParams> {
           <BreadCrumb />
         </div>
         <div>
+          <Screenfull className={styles.screenfull} />
           <Language className={styles.icon} />
           <UserAvatar />
         </div>
