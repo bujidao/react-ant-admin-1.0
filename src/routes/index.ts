@@ -144,6 +144,14 @@ const routes = [
         },
       },
       {
+        path: '/clipboard',
+        component: '@/pages/clipboard',
+        meta: {
+          title: 'clipboard',
+          icon: 'clipboard',
+        },
+      },
+      {
         path: '/i18n',
         component: '@/pages/i18n',
         meta: {

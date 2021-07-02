@@ -28,6 +28,7 @@ const locale = {
     'menu1-1-1': 'Menu 1-1-1',
     'menu1-1-2': 'Menu 1-1-2',
     noSupportScreenfull: 'Devides Not Support Screen Full',
+    clipboard: 'Clipboard',
   },
   login: {
     login: 'Login',

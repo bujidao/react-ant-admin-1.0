@@ -28,6 +28,7 @@ const locale = {
     'menu1-1-1': '菜单 1-1-1',
     'menu1-1-2': '菜单 1-1-2',
     noSupportScreenfull: '设备不支持全屏',
+    clipboard: '剪切板',
   },
   login: {
     login: '登录',
