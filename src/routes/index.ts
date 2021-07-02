@@ -144,6 +144,14 @@ const routes = [
         },
       },
       {
+        path: '/pdf',
+        component: '@/pages/pdf',
+        meta: {
+          title: 'pdf',
+          icon: 'pdf',
+        },
+      },
+      {
         path: '/clipboard',
         component: '@/pages/clipboard',
         meta: {

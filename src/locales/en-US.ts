@@ -29,6 +29,7 @@ const locale = {
     'menu1-1-2': 'Menu 1-1-2',
     noSupportScreenfull: 'Devides Not Support Screen Full',
     clipboard: 'Clipboard',
+    pdf: 'PDF',
   },
   login: {
     login: 'Login',
