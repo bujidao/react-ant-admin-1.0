@@ -23,7 +23,8 @@ class PdfReviewer extends React.Component<PdfReviewerProps, PdfReviewerState> {
     };
   }
 
-  onDocumentLoadSuccess({ numPages }) {
+  onDocumentLoadSuccess(props: any) {
+    const { numPages } = props;
     let components: Array<any> = [];
     for (let i = 1; i <= numPages; i++) {
       components.push(<Page className={styles.page} pageNumber={i} key={i} />);
