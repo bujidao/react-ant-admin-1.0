@@ -29,7 +29,8 @@ const locale = {
     'menu1-1-2': '菜单 1-1-2',
     noSupportScreenfull: '设备不支持全屏',
     clipboard: '剪切板',
-    pdf: 'Pdf 文件',
+    pdf: 'PDF 文件',
+    login: '登录',
   },
   login: {
     login: '登录',

@@ -18,7 +18,7 @@ const routes = [
     path: '/login',
     component: '@/pages/login',
     meta: {
-      title: '登录',
+      title: 'login',
       icon: 'table',
     },
   },

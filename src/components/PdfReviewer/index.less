@@ -1,0 +1,17 @@
+.pdf-reviewer {
+  height: 100%;
+  .main {
+    overflow: auto;
+    margin: 5px 0;
+    .page {
+      margin: 0 auto;
+    }
+  }
+  canvas {
+    margin: 0 auto !important;
+  }
+  .react-pdf__Page__annotations.annotationLayer,
+  .react-pdf__Page__textContent {
+    display: none !important;
+  }
+}

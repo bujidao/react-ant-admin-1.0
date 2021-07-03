@@ -30,6 +30,7 @@ const locale = {
     noSupportScreenfull: 'Devides Not Support Screen Full',
     clipboard: 'Clipboard',
     pdf: 'PDF',
+    login: 'Login',
   },
   login: {
     login: 'Login',
