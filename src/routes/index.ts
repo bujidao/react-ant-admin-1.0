@@ -154,6 +154,7 @@ const routes = [
             path: '/excel/export-excel',
             meta: {
               title: 'export-excel',
+              icon: 'excel',
             },
             component: '@/pages/excel/export-excel',
           },

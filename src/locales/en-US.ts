@@ -31,6 +31,8 @@ const locale = {
     clipboard: 'Clipboard',
     pdf: 'PDF',
     login: 'Login',
+    excel: 'Excel',
+    'export-excel': 'Export Excel',
   },
   login: {
     login: 'Login',

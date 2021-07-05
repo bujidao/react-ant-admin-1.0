@@ -31,6 +31,8 @@ const locale = {
     clipboard: '剪切板',
     pdf: 'PDF 文件',
     login: '登录',
+    excel: 'Excel',
+    'export-excel': '导出 Excel',
   },
   login: {
     login: '登录',
