@@ -17,16 +17,24 @@
 * 数据加密请求
 * 界面水印功能
 * 点击复制到剪切板
+* `pdf`上传和预览
+* `excel`上传和预览
+* 导出table数据为excel并下载
+* 动态渲染table
 
 ### 技术
-* 使用了`redux`对数据状态进行管理
-* 封装`axios`发送数据请求、内置
-* 用`locales`插件实现了国际化
-* 用`js-cookies`完成了项目数据的本地存储
-* 使用`AES`对数据请求进行加密
+* 使用了[redux](https://github.com/reduxjs/redux)对数据状态进行管理
+* 封装[axios](https://github.com/axios/axios)，统一管理请求地址，并对请求和响应进行拦截
+* 用内置`locales`插件实现了国际化
+* 用[js-cookies](js-cookies)完成了项目数据的本地存储
+* 使用[AES](https://github.com/brix/crypto-js)对数据请求进行加密
 * 使用`token`对用户进行判断
-* 用`react-svg`对svg图标进行封装，能够支持svg图标动态引入
-* 封装了点击复制到剪切板的方法
+* 使用[screenfull](https://github.com/sindresorhus/screenfull.js)实现页面全屏的功能
+* 用[react-svg](https://github.com/tanem/react-svg)对svg图标进行封装，能够支持svg图标动态引入
+* 用[copy-to-clipboard](https://github.com/sudodoki/copy-to-clipboard#readme)封装了点击复制到剪切板的方法
+* 使用[xlsx](https://github.com/SheetJS/sheetjs)实现了excel的上传预览
+* 使用[react-html-table-to-excel](https://github.com/zsusac/ReactHTMLTableToExcel)实现了导出table数据到excel的功能
+* 使用[react-pdf](https://github.com/wojtekmaj/react-pdf)实现了预览pdf的功能
 
 ### UI风格
 * 登录界面使用了2021年度最热最火的`Neumorphism`风格
