@@ -18,10 +18,10 @@ class ReadExcel extends React.Component<any, ReacExcelState> {
       columns: [],
     };
   }
-  getBase64(img: any, callback: Function) {
+  getBase64(file: any, callback: Function) {
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
+    reader.readAsDataURL(file);
   }
   // tableData: any = []
   // columns: any = [
