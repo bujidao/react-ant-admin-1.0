@@ -1,6 +1,8 @@
 import React from 'react';
 import { Prompt, withRouter, Link, history } from 'umi';
 import { Switch } from 'antd';
+import ErrorModule from './errorModule';
+import MyDemo from './demo.jsx';
 
 class Test extends React.Component {
   constructor(props: any) {
@@ -30,6 +32,8 @@ class Test extends React.Component {
           {this.state.showPrompt && <Prompt message="你确定要离开么？" />}
           <hr />
         </div>
+        {/* <ErrorModule />
+        <MyDemo /> */}
 
         <div className="module">
           <h3>Link</h3>

@@ -144,6 +144,22 @@ const routes = [
         },
       },
       {
+        path: '/excel',
+        meta: {
+          title: 'excel',
+          icon: 'excel',
+        },
+        routes: [
+          {
+            path: '/excel/export-excel',
+            meta: {
+              title: 'export-excel',
+            },
+            component: '@/pages/excel/export-excel',
+          },
+        ],
+      },
+      {
         path: '/pdf',
         component: '@/pages/pdf',
         meta: {

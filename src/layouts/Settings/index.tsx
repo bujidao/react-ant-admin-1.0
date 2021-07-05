@@ -9,7 +9,7 @@ interface settingsParams {
   visible: boolean;
 }
 
-class Settings extends React.Component<settingsParams, settingsParams> {
+class Settings extends React.Component<any, settingsParams> {
   constructor(props: settingsParams) {
     super(props);
     this.state = {
