@@ -33,6 +33,7 @@ const locale = {
     login: '登录',
     excel: 'Excel',
     'export-excel': '导出 Excel',
+    'read-excel': '读取 Excel',
   },
   login: {
     login: '登录',

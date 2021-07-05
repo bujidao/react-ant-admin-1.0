@@ -152,11 +152,19 @@ const routes = [
         routes: [
           {
             path: '/excel/export-excel',
+            component: '@/pages/excel/export-excel',
             meta: {
               title: 'export-excel',
               icon: 'excel',
             },
-            component: '@/pages/excel/export-excel',
+          },
+          {
+            path: '/excel/read-excel',
+            component: '@/pages/excel/read-excel',
+            meta: {
+              title: 'read-excel',
+              icon: 'excel',
+            },
           },
         ],
       },

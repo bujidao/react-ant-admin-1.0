@@ -33,6 +33,7 @@ const locale = {
     login: 'Login',
     excel: 'Excel',
     'export-excel': 'Export Excel',
+    'read-excel': 'Read Excel',
   },
   login: {
     login: 'Login',
