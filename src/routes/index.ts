@@ -44,11 +44,28 @@ const routes = [
       },
       {
         path: '/table',
-        component: '@/pages/table',
         meta: {
           title: 'table',
           icon: 'table',
         },
+        routes: [
+          {
+            path: '/table/dynamic-table',
+            component: '@/pages/table/dynamic-table',
+            meta: {
+              title: 'dynamic-table',
+              icon: 'table',
+            },
+          },
+          {
+            path: '/table/complex-table',
+            component: '@/pages/table/complex-table',
+            meta: {
+              title: 'complex-table',
+              icon: 'table',
+            },
+          },
+        ],
       },
       {
         path: '/nested',

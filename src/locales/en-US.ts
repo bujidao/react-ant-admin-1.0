@@ -34,6 +34,8 @@ const locale = {
     excel: 'Excel',
     'export-excel': 'Export Excel',
     'read-excel': 'Read Excel',
+    'complex-table': 'Complex Table',
+    'dynamic-table': 'Dynamic Table',
   },
   login: {
     login: 'Login',

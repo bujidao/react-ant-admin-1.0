@@ -34,6 +34,8 @@ const locale = {
     excel: 'Excel',
     'export-excel': '导出 Excel',
     'read-excel': '读取 Excel',
+    'complex-table': '综合表单',
+    'dynamic-table': '动态表单',
   },
   login: {
     login: '登录',
